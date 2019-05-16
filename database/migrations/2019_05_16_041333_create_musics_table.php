@@ -17,10 +17,10 @@ class CreateMusicsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('lyric');
-            $table->int('view');
+            $table->integer('view');
             $table->string('path');
             $table->string('author');
-            $table->int('rating');
+            $table->integer('rating');
             $table->string('slug');
             $table->timestamps();
         });

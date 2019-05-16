@@ -15,8 +15,8 @@ class CreateMusicCategoryTable extends Migration
     {
         Schema::create('music_category', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('music_id');
-            $table->int('category_id');
+            $table->integer('music_id');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }
