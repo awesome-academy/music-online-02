@@ -15,8 +15,8 @@ class CreateMusicArtistTable extends Migration
     {
         Schema::create('music_artist', function (Blueprint $table) {
             $table->increments('id');
-            $table->int('music_id');
-            $table->int('artist_id');
+            $table->integer('music_id');
+            $table->integer('artist_id');
             $table->timestamps();
         });
     }
