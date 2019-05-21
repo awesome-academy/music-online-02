@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'HomeController@loadMusics');
+Route::get('/', 'HomeController@index');

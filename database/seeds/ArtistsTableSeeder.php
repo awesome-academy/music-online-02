@@ -14,19 +14,19 @@ class ArtistsTableSeeder extends Seeder
         DB::table('artists')->insert([
             'name' => 'Son Tung',
             'description' => 'dep trai',
-            'image' => 'image/5.png',
+            'image' => 'bower_components/hoang-md-client/client/images/a3.png',
             'slug' => 'son-tung',
         ]);
         DB::table('artists')->insert([
             'name' => 'Huong Tram',
             'description' => 'hat hay',
-            'image' => 'image/6.png',
+            'image' => 'bower_components/hoang-md-client/client/images/a1.png',
             'slug' => 'huong-tram',
         ]);
         DB::table('artists')->insert([
             'name' => 'Tuan Hung',
             'description' => 'hat hay',
-            'image' => 'image/6.png',
+            'image' => 'bower_components/hoang-md-client/client/images/a2.png',
             'slug' => 'tuan-hung',
         ]);
     }
