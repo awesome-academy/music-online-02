@@ -11,7 +11,14 @@
                     <li >
                         <a href="#" class="auto"> <span class="pull-right text-muted"> <i class="fa fa-angle-left text"></i> <i class="fa fa-angle-down text-active"></i> </span> <i class="icon-screen-desktop icon"> </i> <span>{{ trans('label.home_category') }}</span> </a> 
                         <ul class="nav dk text-sm">
-                            <li > <a href="layout-color.html" class="auto"> <i class="fa fa-angle-right text-xs"></i> <span>{{ config('home.menu.category.pop') }}</span> </a> </li>
+                            @foreach($categories as $items)
+                            <li > 
+                                <a href="layout-color.html" class="auto"> 
+                                    <i class="fa fa-angle-right text-xs"></i> 
+                                    <span>{{ $items->name }}</span> 
+                                </a> 
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
                 </ul>
