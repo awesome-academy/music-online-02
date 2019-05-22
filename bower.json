@@ -14,5 +14,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "hoang-md-client": "https://github.com/manh2911/bower-music.git"
+  }
 }

@@ -37,17 +37,19 @@
                             <div class="col-md-7">
                             <h3 class="font-thin">{{ trans('label.album') }}</h3>
                             <div class="row row-sm">
+                                @foreach($albums as $items)
                                 <div class="col-xs-6 col-sm-3">
                                     <div class="item">
                                         <div class="pos-rlt">
                                         <div class="item-overlay opacity r r-2x bg-black">
                                             <div class="center text-center m-t-n"> <a href="#"><i class="fa fa-play-circle i-2x"></i></a> </div>
                                         </div>
-                                        <a href="#"><img src="" alt="" class="r r-2x img-full"></a> 
+                                        <a href="#"><img src="{{ $items->image }}" alt="" class="r r-2x img-full"></a> 
                                         </div>
-                                        <div class="padder-v"> <a href="#" class="text-ellipsis">{{ config('home.album.name') }}</a> <a href="#" class="text-ellipsis text-xs text-muted">{{ config('home.album.artist') }}</a> </div>
+                                        <div class="padder-v"> <a href="#" class="text-ellipsis">{{ $items->name }}</a> <a href="#" class="text-ellipsis text-xs text-muted">{{ config('home.album.artist') }}</a> </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
                             </div>
                             <div class="col-md-5">
@@ -75,15 +77,17 @@
                 <section class="vbox animated fadeInRight">
                     <section class="w-f-md scrollable hover">
                         <h4 class="font-thin m-l-md m-t">{{ trans('label.artists') }}</h4>
+                        @foreach($artists as $items)
                         <ul class="list-group no-bg no-borders auto m-t-n-xxs">
                             <li class="list-group-item">
-                            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm"> <img src="" alt="..." class="img-circle"> </span> 
+                            <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm"> <img src="{{ $items->image }}" class="img-circle"> </span> 
                             <div class="clear">
-                                <div><a href="#">{{ config('home.artist.name') }}</a></div>
+                                <div><a href="#">{{ $items->name }}</a></div>
                                 <!-- <small class="text-muted">New York</small>  -->
                             </div>
                             </li>
                         </ul>
+                        @endforeach
                     </section>
                     <footer class="footer footer-md bg-black">
                         <form class="" role="search">

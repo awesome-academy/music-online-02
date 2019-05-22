@@ -3,8 +3,10 @@
 return [
 
     'number' => [
-        'begin' => '0',
-        'end' => '11',
+        'begin_music' => '0',
+        'end_music' => '11',
+        'begin_album' => '0',
+        'end_album' => '8',
     ],
     
     'menu' => [
