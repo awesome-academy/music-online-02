@@ -69,4 +69,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    public function register(Request $request)
+    {
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->role_id = config('home.register.role_id');
+        $user->image = config('home.register.image');
+        $user->save();
+        return redirect('/');
+    }
 }
