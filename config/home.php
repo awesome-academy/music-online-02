@@ -41,4 +41,11 @@ return [
         'artist' => 'Dan Truong',
     ],
 
+    'role_admin' => '1',
+
+    'register' => [
+        'role_id' => '2',
+        'image' => 'bower_components/hoang-md-client/client/images/a0.png',
+    ],
+
 ];

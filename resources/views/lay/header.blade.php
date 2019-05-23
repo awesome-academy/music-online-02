@@ -11,13 +11,20 @@
     <div class="navbar-right ">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"> <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm"> <img src="images/a0.png" alt="..."> </span>{{ config('home.user.name') }}<b class="caret"></b> </a> 
+            @if(Auth::check())       
+                <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"> <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm"> <img src="{{ Auth::user()->image }}"> </span>{{ Auth::user()->name }}<b class="caret"></b> </a> 
                 <ul class="dropdown-menu animated fadeInRight">
-                <li> <span class="arrow top"></span> <a href="#">{{ trans('label.settings') }}</a> </li>
-                <li> <a href="profile.html">{{ trans('label.profile') }}</a> </li>
+                @if(Auth::user()->role_id == config('home.role_admin'))  
+                <li> <span class="arrow top"></span> <a href="#">{{ trans('label.manager') }}</a> </li>
+                @endif
+                <li> <a href="#">{{ trans('label.profile') }}</a> </li>
                 <li class="divider"></li>
-                <li> <a href="modal.lockme.html" data-toggle="ajaxModal" >{{ trans('label.logout') }}</a> </li>
+                <li> <a href="{{ Auth::logout() }}">{{ trans('label.logout') }}</a> </li>
                 </ul>
+            @else
+                <li><a href="login" class="dropdown-toggle bg clear">{{ trans('label.login') }}</a></li>
+                <li><a href="register" class="dropdown-toggle bg clear">{{ trans('label.register') }}</a></li>
+            @endif
             </li>
         </ul>
     </div>

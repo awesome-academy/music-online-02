@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,4 +12,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'PageController@index');
+
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

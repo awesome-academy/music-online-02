@@ -1,5 +1,6 @@
 @extends('lay.index')
 @section('content')
+@include('lay.header')
 <section>
     <section class="hbox stretch">
         <!-- .aside --> 
