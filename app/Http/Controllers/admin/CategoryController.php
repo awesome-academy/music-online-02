@@ -18,10 +18,6 @@ class CategoryController extends Controller
     	return view('admin.category.listCategory',compact('categories'));
     }
 
-
-    	return view('admin.category.listCategory',compact('categories'));
-    }
-
     public function addViewCategory()
     {
     	return view('admin.category.addCategory');
@@ -31,7 +27,7 @@ class CategoryController extends Controller
     {
     	$categories = new Category();
     	$categories->name =$request->nameCategory;
-    	$categories->slug='';
+    	$categories->slug=$request->slug;
     	$categories->save();
 
     	return redirect()->route('categories');
@@ -44,15 +40,6 @@ class CategoryController extends Controller
     	return view('admin.category.updateCategory',compact('categories'));
     }
 
-    	return redirect()->route('categories');
-    }
-
-    public function updateViewCategory($id)
-    {
-    	$categories=Category::find($id);
-    	return view('admin.category.updateCategory',compact('categories'));
-    }
-
     public function updateProcessCategory(Request $request,$id)
     {
     	$categories = new Category();
@@ -62,12 +49,6 @@ class CategoryController extends Controller
     	return redirect()->route('categories');
     }
     
-    public function deleteCategory($id)
-    {
-    	Category::where('id',$id)->delete();
-
-    	return redirect()->route('categories');
-    }
     public function deleteCategory($id)
     {
     	Category::where('id',$id)->delete();

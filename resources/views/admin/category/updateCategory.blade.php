@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-<form action="admin/updateProcessCategory/{{$categories->id}}" method="post">
+<form action="admin/updateProcessCategories/{{$categories->id}}" method="post">
     <legend>Thêm Category Mới</legend>
     <input type="hidden" name="_token" value="{{csrf_token()}}">
 	<table class="table"> 

@@ -103,13 +103,13 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Manage:</h6>
           <a class="dropdown-item" href="admin/categories">Categories</a>
-          <a class="dropdown-item" href="register.html">Artists</a>
-          <a class="dropdown-item" href="forgot-password.html">Musics</a>
-          <a class="dropdown-item" href="forgot-password.html">Albums</a>
-          <a class="dropdown-item" href="forgot-password.html">Comments</a>
-          <a class="dropdown-item" href="forgot-password.html">Roles</a>
-          <a class="dropdown-item" href="forgot-password.html">Ratings</a>
-          <a class="dropdown-item" href="forgot-password.html">Users</a>
+          <a class="dropdown-item" href="admin/artists">Artists</a>
+          <a class="dropdown-item" href="admin/musics">Musics</a>
+          <a class="dropdown-item" href="admin/albums">Albums</a>
+          <a class="dropdown-item" href="admin/comments">Comments</a>
+          <a class="dropdown-item" href="admin/Roles">Roles</a>
+          <a class="dropdown-item" href="admin/Ratings">Ratings</a>
+          <a class="dropdown-item" href="admin/Users">Users</a>
           <div class="dropdown-divider"></div>
           <h6 class="dropdown-header">Other Pages:</h6>
           <a class="dropdown-item" href="404.html">404 Page</a>

@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-	<a href="admin/addcategories" class="btn btn-primary">Add</a>
+	<a href="admin/addCategories" class="btn btn-primary">Add</a>
     <table>
 		<thead>
 			<th>Id</th>
@@ -13,8 +13,8 @@
 				
 				<td>{{$item->id}}</td>
 				<td>{{$item->name}}</td>
-				<td><a href="admin/updateCategory/{{$item->id}}">Update</a></td>
-				<td><a href="admin/deleteCategory/{{$item->id}}">Delete</a></td>
+				<td><a href="admin/updateCategories/{{$item->id}}">Update</a></td>
+				<td><a href="admin/deleteCategories/{{$item->id}}">Delete</a></td>
 			</tr>
 			@endforeach
 		</tbody>
