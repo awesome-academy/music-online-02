@@ -10,12 +10,12 @@ use App\Artist;
 
 class ArtistController extends Controller
 {
-     public function listArtist()
+    public function listArtist()
     {
-    	$aritsts=Artist::orderBy('id','ASC')->get();
+    	$artist=Artist::orderBy('id','ASC')->get();
 
 
-    	return view('admin.artist.listArtist',compact('aritsts'));
+    	return view('admin.artist.listArtist',compact('artist'));
     }
 
     public function addViewArtist()
@@ -25,12 +25,12 @@ class ArtistController extends Controller
 
     public function addProcessArtist(Request $request)
     {
-    	$aritsts = new Artist();
-    	$aritsts->name =$request->nameArtist;
-    	$aritsts->description =$request->description;
-    	$aritsts->slug=$request->slug;
-    	$aritsts->image=$request->image;
-    	$aritsts->save();
+    	$artist = new Artist();
+    	$artist->name = $request->nameArtist;
+    	$artist->description = $request->description;
+    	$artist->slug = $request->slug;
+    	$artist->image = $request->image;
+    	$artist->save();
 
     	return redirect()->route('artists');
     }
@@ -44,22 +44,22 @@ class ArtistController extends Controller
 
     public function updateProcessArtist(Request $request,$id)
     {
-    	$aritsts = new Artist();
-    	$name=$aritsts->name=$request->nameArtist;	
-    	$description=$aritsts->description=$request->description;
-    	$slug=$aritsts->slug=$request->slug;
-    	if ($request->image=='') {
-    		$image=$aritsts->image=$request->dataImage;	
+    	$artist = new Artist();
+    	$name = $artist->name = $request->nameArtist;	
+    	$description = $artist->description = $request->description;
+    	$slug = $artist->slug=$request->slug;
+    	if ($request->image == '') {
+    		$image = $artist->image = $request->dataImage;	
     	}
     	else
     	{
-    		$image=$aritsts->image=$request->image;	
+    		$image = $artist->image = $request->image;	
     	}
-    	$aritsts=Artist::where('id',$id)->update([
-    		'name'=>$name,
-    		'description'=>$description,
-    		'slug'=>$slug,
-    		'image'=>$image
+    	$artist = Artist::where('id',$id)->update([
+    		'name' => $name,
+    		'description' => $description,
+    		'slug' => $slug,
+    		'image' => $image
     	]);
 
     	return redirect()->route('artists');

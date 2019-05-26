@@ -40,7 +40,7 @@ Route::group(['prefix'=>'admin'],function()
     	'as'=>'categories.delete',
     	'uses'=>'admin\CategoryController@deleteCategory'
     ]);
-    ///////
+    ///////     Artist
     Route::get('/artists',[
     	'as'=>'artists',
     	'uses'=>'admin\ArtistController@listArtist'
@@ -65,10 +65,33 @@ Route::group(['prefix'=>'admin'],function()
     	'as'=>'artists.delete',
     	'uses'=>'admin\ArtistController@deleteArtist'
     ]);
-
+    //////////   Music
+    Route::get('/musics',[
+    	'as'=>'musics',
+    	'uses'=>'admin\MusicController@listMusic'
+    ]);
+    Route::get('/addMusics',[
+    	'as'=>'musics.add_view',
+    	'uses'=>'admin\MusicController@addViewMusic'
+    ]);
+    Route::post('/addProcessMusics',[
+    	'as'=>'musics.add_process',
+    	'uses'=>'admin\MusicController@addProcessMusic'
+    ]);
+    Route::get('updateMusics/{id}',[
+    	'as'=>'musics.update_view',
+    	'uses'=>'admin\MusicController@updateViewMusic'
+    ]);
+    Route::post('updateProcessMusics/{id}',[
+    	'as'=>'musics.update_process',
+    	'uses'=>'admin\MusicController@updateProcessMusic'
+    ]);
+    Route::get('deleteMusics/{id}',[
+    	'as'=>'musics.delete',
+    	'uses'=>'admin\MusicController@deleteMusic'
+    ]);
 }
 );
 ///////////////////////////////////////////////
 Route::get('/', 'HomeController@index');
-Route::get('/', 'HomeController@loadMusics');
 

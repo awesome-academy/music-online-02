@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 	<a href="admin/addCategories" class="btn btn-primary">Add</a>
-    <table>
+    <table id="dataTable" class="table table-bordered dataTable" aria-describedby="dataTable_info">
 		<thead>
 			<th>Id</th>
 			<th>Name</th>

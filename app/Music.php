@@ -8,6 +8,7 @@ class Music extends Model
 {
     public $timestamps = 'true';
 
+     protected $fillable = ['name', 'lyric','view','path','author','rating','slug','image'];
     public function ratings()
     {
         return $this->hasMany('App\Rating');
@@ -32,4 +33,5 @@ class Music extends Model
     {
         return $this->belongsToMany('App\Album', 'music_album', 'music_id', 'album_id');
     }
+
 }
