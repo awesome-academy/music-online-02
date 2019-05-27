@@ -1,5 +1,6 @@
 @extends('lay.index')
 @section('content')
+@include('lay.header')
 <section>
     <section class="hbox stretch">
         <!-- .aside --> 
@@ -20,13 +21,13 @@
                                     <div class="top"> <span class="pull-right m-t-sm m-r-sm badge bg-info">{{ $items->view }}</span> </div>
                                     <div class="item-overlay opacity r r-2x bg-black">
                                         <div class="text-info padder m-t-sm text-sm"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-o text-muted"></i> </div>
-                                        <div class="center text-center m-t-n"> <a href="#"><i class="icon-control-play i-2x"></i></a> </div>
+                                        <div data-id ="{{  $items->id }}" class="center text-center m-t-n play-music"> <a href="javascript:;"><i class="icon-control-play i-2x"></i></a> </div>
                                         <div class="bottom padder m-b-sm"> <a href="#" class="pull-right"> <i class="fa fa-heart-o"></i> </a> <a href="#"> <i class="fa fa-plus-circle"></i> </a> </div>
                                     </div>
-                                    <a href="#"><img src="{{ $items->image }}" alt="" class="r r-2x img-full"></a> 
+                                    <a href="music/{{ $items->id }}/{{ $items->slug }}"><img src="{{ $items->image }}" alt="" class="r r-2x img-full"></a> 
                                 </div>
                                 <div class="padder-v"> 
-                                    <a href="#" class="text-ellipsis">{{ $items->name }}</a> 
+                                    <a href="music/{{ $items->id }}/{{ $items->slug }}" class="text-ellipsis">{{ $items->name }}</a> 
                                     <a href="#" class="text-ellipsis text-xs text-muted">{{ config('home.music.artist') }}</a> 
                                 </div>
                             </div>

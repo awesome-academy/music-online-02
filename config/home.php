@@ -7,6 +7,7 @@ return [
         'end_music' => '11',
         'begin_album' => '0',
         'end_album' => '8',
+        'end_song' => '15',
     ],
     
     'menu' => [
@@ -40,5 +41,12 @@ return [
     'music' => [
         'artist' => 'Dan Truong',
     ],
+
+    'comment' => [
+        'comment' => 'Comment',
+        'submit' => 'Submit Comment',
+    ],
+
+    'fail' => '404',
 
 ];

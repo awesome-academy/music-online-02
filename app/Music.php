@@ -32,4 +32,8 @@ class Music extends Model
     {
         return $this->belongsToMany('App\Album', 'music_album', 'music_id', 'album_id');
     }
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

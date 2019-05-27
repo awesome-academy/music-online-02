@@ -11,8 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'PageController@index');
+Route::get('music/{id}/{slug}', 'PageController@music');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('musics', 'MusicController');
+//Route::get('/home', 'HomeController@index')->name('home');
