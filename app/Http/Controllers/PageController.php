@@ -18,12 +18,4 @@ class PageController extends Controller
         return view('home',compact('musics', 'albums', 'artists')); 
     } 
 
-    public function music($id, $slug){
-        $musics = Music::findOrFail($id);
-        $songs = Music::orderBy('id', 'DESC')->skip(config('home.number.begin_music'))->take(config('home.number.end_song'))->get();
-        $comments = $musics->comments()->orderBy('id', 'DESC')->get();
-        $artists = $musics->artists()->get();
-     
-        return view('pages.music', compact('musics', 'songs', 'comments', 'artists'));
-    }
 }

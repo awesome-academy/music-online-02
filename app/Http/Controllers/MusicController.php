@@ -12,9 +12,14 @@ class MusicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id, $slug)
     {
-        //
+        $musics = Music::findOrFail($id);
+        $songs = Music::orderBy('id', 'DESC')->skip(config('home.number.begin_music'))->take(config('home.number.end_song'))->get();
+        $comments = $musics->comments()->orderBy('id', 'DESC')->get();
+        $artists = $musics->artists()->get();
+     
+        return view('pages.music', compact('musics', 'songs', 'comments', 'artists'));
     }
 
     /**
