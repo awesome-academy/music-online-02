@@ -1,8 +1,7 @@
 <?php
 
 return [
-
-    'settings' => 'Settings',
+    'manager' => 'Manager',
     'profile' => 'Profile',
     'logout' => 'Logout',
     'title' => 'Music',
@@ -12,5 +11,8 @@ return [
     'artists' => 'Artists',
     'home_playlist' => 'Playlist',
     'home_category' => 'Category',
+    'register' => 'Register',
+    'login' => 'Login',
+    'confirm_login' => 'Already have an account?',
 
 ];
