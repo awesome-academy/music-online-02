@@ -12,8 +12,9 @@ use App\Http\Controllers\PageController;
 |
 */
 
-Route::get('/', 'PageController@index');
-
 Auth::routes();
+Route::get('/', 'PageController@index');
+Route::get('music/{id}/{slug}', 'MusicController@index');
+Route::resource('musics', 'MusicController');
 
 //Route::get('/home', 'HomeController@index')->name('home');

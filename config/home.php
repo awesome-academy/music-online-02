@@ -7,6 +7,7 @@ return [
         'end_music' => '11',
         'begin_album' => '0',
         'end_album' => '8',
+        'end_song' => '15',
     ],
     
     'menu' => [
@@ -48,4 +49,16 @@ return [
         'image' => 'bower_components/hoang-md-client/client/images/a0.png',
     ],
 
+    'fail' => '404',
+
+    'comment' => [
+        'submit' => 'Submit',
+        'comment' => 'Comment',
+    ],
+
+    'image' => [
+        'image_logo' => 'images/logo.png',
+        'image_link' => '/',
+    ],
+    
 ];

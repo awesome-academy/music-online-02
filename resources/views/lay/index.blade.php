@@ -23,8 +23,9 @@
       <script src="/bower_components/hoang-md-client/client/js/app.plugin.js"></script> 
       <script type="text/javascript" src="/bower_components/hoang-md-client/client/js/jPlayer/jquery.jplayer.min.js"></script> 
       <script type="text/javascript" src="/bower_components/hoang-md-client/client/js/jPlayer/add-on/jplayer.playlist.min.js"></script> 
-      <script type="text/javascript" src="/bower_components/hoang-md-client/client/js/jPlayer/demo.js"></script>
+      {{-- <script type="text/javascript" src="/bower_components/hoang-md-client/client/js/jPlayer/demo.js"></script> --}}
       <script type="text/javascript" src="/bower_components/hoang-md-client/client/js/myjs.js"></script>
+      <script type="text/javascript" src="custom-js/mjs.js"></script>
    </body>
    <!-- Mirrored from flatfull.com/themes/musik/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 May 2019 06:26:28 GMT -->
 </html>
