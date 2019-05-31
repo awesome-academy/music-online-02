@@ -14,5 +14,6 @@ return [
     'register' => 'Register',
     'login' => 'Login',
     'confirm_login' => 'Already have an account?',
+    'lyric' => "Lyric:"
 
 ];

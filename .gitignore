@@ -12,3 +12,4 @@ yarn-error.log
 /public/bower_components
 .idea
 /storage/debugbar
+/public/custom-js
