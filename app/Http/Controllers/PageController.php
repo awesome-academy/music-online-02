@@ -18,4 +18,29 @@ class PageController extends Controller
         
         return view('home', compact('musics', 'albums', 'artists')); 
     } 
+
+    public function artist($id)
+    {
+        $artist = Artist::findOrFail($id);
+        if (!$artist) {
+            return redirect('/');
+        } else {
+            return view('pages.artist', compact('artist'));
+        }
+    }
+
+    public function getJsonMusic($id)
+    {
+        $song = Music::with('artists')->findOrFail($id);
+        
+        return response()->json($song);
+    }
+
+    public function getJsonAlbum($id)
+    {
+        $album = Album::with('artists')->findOrFail($id);
+        $music = $album->musics()->get();
+
+        return response()->json($music);
+    }
 }

@@ -46,7 +46,8 @@ Route::group(['prefix' => 'admin'],function()
 ////////////
 Auth::routes();
 Route::get('/', 'PageController@index');
-Route::get('music/{id}/{slug}', 'MusicController@index');
-Route::resource('musics', 'MusicController');
-
-//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/musics/{id}', 'PageController@getJsonMusic');
+Route::get('/albums/{id}', 'PageController@getJsonAlbum');
+Route::get('artist/{id}', 'PageController@artist');
+Route::resource('music', 'MusicController', ['only' => ['show']]);
+Route::resource('album', 'AlbumController', ['only' => ['show']]);

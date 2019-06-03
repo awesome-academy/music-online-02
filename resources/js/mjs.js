@@ -11,14 +11,13 @@ function play(songId) {
             _token: $('meta[name="csrf-token"]').attr('content')
         },
         success: function (res) {
-            var pathSong = res.path;
             var myPlaylist = new jPlayerPlaylist({
             jPlayer: "#jplayer_N",
             cssSelectorAncestor: "#jp_container_N",
         }, [{
             title: res.name,
             artist: res.artists[0].name,
-            mp3: pathSong,
+            mp3: res.path,
         }, ], {
             playlistOptions: {
                 enableRemoveControls: true,

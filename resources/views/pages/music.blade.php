@@ -3,9 +3,7 @@
 @include('lay.header')
 <section>
    <section class="hbox stretch">
-      <!-- .aside --> 
       @include('lay.menu')
-      <!-- /.aside --> 
       <section id="content">
          <section class="vbox">
             <section class="w-f-md">
@@ -80,13 +78,16 @@
                                  <a href="#" class="pull-left thumb-sm m-r"> 
                                     <img class="img-lq" src="{{ $item->image }}"> 
                                  </a> 
-                                 <a class="clear" href="music/{{ $item->id }}/{{ $item->slug }}"> 
-                                    <span class="block text-ellipsis">{{ $item->name }}</span> 
+                                 <a class="clear"> 
+                                    <span class="block text-ellipsis">
+                                       <a href="music/{{ $item->id }}">{{ $item->name }}</a>
+                                    </span> 
+                                    <br>
+                                    @php
+                                       $artist = $item->artists()->first();
+                                    @endphp
                                     <small class="text-muted">
-                                       @php
-                                          $artist = $item->artists()->first();
-                                       @endphp
-                                       {{ $artist->name }}
+                                       <a href="artist/{{ $artist->id }}">{{ $artist->name }}</a>
                                     </small> 
                                  </a>   
                               </li>
@@ -105,4 +106,3 @@
 </section>
 <input type="hidden" id="song" value="{{ $musics->id }}">
 @endsection
-

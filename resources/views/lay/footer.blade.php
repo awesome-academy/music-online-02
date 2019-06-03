@@ -3,7 +3,6 @@
         <div class="jp-type-playlist">
         <div id="jplayer_N" class="jp-jplayer hide"></div>
         <div class="jp-gui">
-            <div class="jp-video-play hide"> <a class="jp-video-play-icon">play</a> </div>
             <div class="jp-interface">
                 <div class="jp-controls">
                     <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a></div>

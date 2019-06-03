@@ -28,7 +28,8 @@ return [
     'user' => 'Users',
     'leave' => 'Ready to leave',
     'cancel' => 'Cancel',
-    'logout' => 'Logout',
     'dashboard' => 'Dashboard',
     'search' => 'Search for ....',
+    'info' => 'Infomation',
+
 ];

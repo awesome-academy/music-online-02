@@ -37,7 +37,7 @@
                                                 <i class="fa fa-star"></i> 
                                                 <i class="fa fa-star-o text-muted"></i> 
                                             </div>
-                                            <div data-id ="{{  $items->id }}" class="center text-center m-t-n play-music"> 
+                                            <div data-id ="{{ $items->id }}" class="center text-center m-t-n play-music"> 
                                                 <a href="javascript:;">
                                                     <i class="icon-control-play i-2x"></i>
                                                 </a> 
@@ -51,18 +51,18 @@
                                                 </a> 
                                             </div>
                                         </div>
-                                        <a href="music/{{ $items->id }}/{{ $items->slug }}">
+                                        <a href="music/{{ $items->id }}">
                                             <img src="{{ $items->image }}" alt="" class="r r-2x img-full">
                                         </a> 
                                     </div>
                                     <div class="padder-v"> 
                                         <div data-id ="{{  $items->id }}" class="name-music">
-                                            <a href="music/{{ $items->id }}/{{ $items->slug }}" class="text-ellipsis">{{ $items->name }}</a>
-                                        </div>         
-                                        <a href="#" class="text-ellipsis text-xs text-muted">
-                                            @php
-                                                $artist = $items->artists()->first();
-                                            @endphp
+                                            <a href="music/{{ $items->id }}" class="text-ellipsis">{{ $items->name }}</a>
+                                        </div>    
+                                        @php
+                                            $artist = $items->artists()->first();
+                                        @endphp     
+                                        <a href="artist/{{ $artist->id }}" class="text-ellipsis text-xs text-muted">
                                             {{ $artist->name }}
                                         </a> 
                                     </div>
@@ -88,8 +88,13 @@
                                                 <a href="{{ config('home.image.image_link') }}"><img src="{{ $items->image }}" alt="" class="r r-2x img-full"></a> 
                                             </div>
                                             <div class="padder-v"> 
-                                                <a href="#" class="text-ellipsis">{{ $items->name }}</a> 
-                                                <a href="#" class="text-ellipsis text-xs text-muted">{{ config('home.album.artist') }}</a> 
+                                                <a href="album/{{ $items->id }}" class="text-ellipsis">{{ $items->name }}</a> 
+                                                @php
+                                                    $artist_album = $items->artists()->first();
+                                                @endphp  
+                                                <a href="artist/{{ $artist_album->id }}" class="text-ellipsis text-xs text-muted">
+                                                    {{ $artist_album->name }}
+                                                </a> 
                                             </div>
                                         </div>
                                     </div>
