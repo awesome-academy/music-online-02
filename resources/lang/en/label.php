@@ -30,5 +30,8 @@ return [
     'cancel' => 'Cancel',
     'logout' => 'Logout',
     'dashboard' => 'Dashboard',
+    'description' => 'Description',
+    'slug' => 'Slug',
+    'image' => 'Image',
     'search' => 'Search for ....',
 ];

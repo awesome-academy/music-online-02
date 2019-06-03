@@ -21,7 +21,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><input type="submit" value="{{ trans('label.update') }}"></td>
+				<td colspan="2" align="center"><input type="submit" class="btn btn-secondary" value="{{ trans('label.update') }}"></td>
 			</tr>
 		</table>
 	</form>

@@ -21,7 +21,7 @@ Route::group(['prefix' => 'admin'],function()
         'as' => 'categories',
         'uses' => 'admin\CategoryController@listCategory'
     ]);
-    Route::get('/addcategories',[
+    Route::get('/addCategories',[
         'as' => 'categories.add_view',
         'uses' => 'admin\CategoryController@addViewCategory'
     ]);
@@ -40,6 +40,31 @@ Route::group(['prefix' => 'admin'],function()
     Route::get('deleteCategory/{id}',[
         'as' => 'categories.delete',
         'uses' => 'admin\CategoryController@deleteCategory'
+    ]);
+    //// Artist
+    Route::get('/artists',[
+        'as' => 'artists',
+        'uses' => 'admin\ArtistController@listArtist'
+    ]);
+    Route::get('/addArtists',[
+        'as' => 'artists.add_view',
+        'uses' => 'admin\ArtistController@addViewArtist'
+    ]);
+    Route::post('/addProcessArtists',[
+        'as' => 'artists.add_process',
+        'uses' => 'admin\ArtistController@addProcessArtist'
+    ]);
+    Route::get('updateArtists/{id}',[
+        'as' => 'artists.update_view',
+        'uses' => 'admin\ArtistController@updateViewArtist'
+    ]);
+    Route::post('updateProcessArtists/{id}',[
+        'as' => 'artists.update_process',
+        'uses' => 'admin\ArtistController@updateProcessArtist'
+    ]);
+    Route::get('deleteArtists/{id}',[
+        'as' => 'artists.delete',
+        'uses' => 'admin\ArtistController@deleteArtist'
     ]);
 }
 );
