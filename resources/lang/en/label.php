@@ -1,8 +1,7 @@
 <?php
 
 return [
-
-    'settings' => 'Settings',
+    'manager' => 'Manager',
     'profile' => 'Profile',
     'logout' => 'Logout',
     'title' => 'Music',
@@ -12,5 +11,24 @@ return [
     'artists' => 'Artists',
     'home_playlist' => 'Playlist',
     'home_category' => 'Category',
-
+    'register' => 'Register',
+    'login' => 'Login',
+    'confirm_login' => 'Already have an account?',
+    'lyric' => "Lyric:",
+    'name' => 'Name',
+    'id' => 'Id',
+    'add_category' => 'Add New Category',
+    'action' => 'Action',
+    'update' => 'Update',
+    'delete' => 'Delete',
+    'add' => 'Add',
+    'comment' => 'Comments',
+    'role' => 'Roles',
+    'rating' => 'Ratings',
+    'user' => 'Users',
+    'leave' => 'Ready to leave',
+    'cancel' => 'Cancel',
+    'logout' => 'Logout',
+    'dashboard' => 'Dashboard',
+    'search' => 'Search for ....',
 ];

@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -10,6 +11,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
 Route::group(['prefix'=>'admin'],function()
 {
     Route::get('/',[
@@ -72,3 +74,44 @@ Route::group(['prefix'=>'admin'],function()
 Route::get('/', 'HomeController@index');
 Route::get('/', 'HomeController@loadMusics');
 
+=======
+Route::group(['prefix' => 'admin'],function()
+{
+    Route::get('/',[
+        'as' => 'home_ad.',
+        'uses' => 'admin\HomeController@home'
+    ]);
+    Route::get('/categories',[
+        'as' => 'categories',
+        'uses' => 'admin\CategoryController@listCategory'
+    ]);
+    Route::get('/addcategories',[
+        'as' => 'categories.add_view',
+        'uses' => 'admin\CategoryController@addViewCategory'
+    ]);
+    Route::post('/addProcessCategory',[
+        'as' => 'categories.add_process',
+        'uses' => 'admin\CategoryController@addProcessCategory'
+    ]);
+    Route::get('updateCategory/{id}',[
+        'as' => 'categories.update_view',
+        'uses' => 'admin\CategoryController@updateViewCategory'
+    ]);
+    Route::post('updateProcessCategory/{id}',[
+        'as' => 'categories.update_process',
+        'uses' => 'admin\CategoryController@updateProcessCategory'
+    ]);
+    Route::get('deleteCategory/{id}',[
+        'as' => 'categories.delete',
+        'uses' => 'admin\CategoryController@deleteCategory'
+    ]);
+}
+);
+////////////
+Auth::routes();
+Route::get('/', 'PageController@index');
+Route::get('music/{id}/{slug}', 'MusicController@index');
+Route::resource('musics', 'MusicController');
+
+//Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> 8d1cca1d4b52919c1ebfafed28862b52984c82e6
