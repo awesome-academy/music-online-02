@@ -14,6 +14,21 @@ return [
     'register' => 'Register',
     'login' => 'Login',
     'confirm_login' => 'Already have an account?',
-    'lyric' => "Lyric:"
-
+    'lyric' => "Lyric:",
+    'name' => 'Name',
+    'id' => 'Id',
+    'add_category' => 'Add New Category',
+    'action' => 'Action',
+    'update' => 'Update',
+    'delete' => 'Delete',
+    'add' => 'Add',
+    'comment' => 'Comments',
+    'role' => 'Roles',
+    'rating' => 'Ratings',
+    'user' => 'Users',
+    'leave' => 'Ready to leave',
+    'cancel' => 'Cancel',
+    'logout' => 'Logout',
+    'dashboard' => 'Dashboard',
+    'search' => 'Search for ....',
 ];

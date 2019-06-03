@@ -61,4 +61,16 @@ return [
         'image_link' => '/',
     ],
     
+    'template' => [
+        'font_css' => 'bower_components/hoang-md-client/admin/vendor/fontawesome-free/css/all.min.css',
+        'plugin' => 'bower_components/hoang-md-client/admin/vendor/datatables/dataTables.bootstrap4.css',
+        'css' => 'bower_components/hoang-md-client/admin/css/sb-admin.css',
+        'js' => 'bower_components/hoang-md-client/admin/vendor/jquery/jquery.min.js',
+        'js_boostrap' => 'bower_components/hoang-md-client/admin/vendor/bootstrap/js/bootstrap.bundle.min.js',
+        'js_plugin' => 'bower_components/hoang-md-client/admin/vendor/jquery-easing/jquery.easing.min.js',
+        'js_chart' => 'bower_components/hoang-md-client/admin/vendor/chart.js/Chart.min.js',
+        'js_datatable' =>'bower_components/hoang-md-client/admin/vendor/datatables/jquery.dataTables.js',
+        'js_datatable_boostrap' => 'bower_components/hoang-md-client/admin/vendor/datatables/dataTables.bootstrap4.js',
+        'js_main' => 'bower_components/hoang-md-client/admin/js/sb-admin.min.js'
+    ],
 ];
