@@ -34,5 +34,10 @@ return [
     'image' => 'Image',
     'search' => 'Search for ....',
     'info' => 'Infomation',
+    'send_email' => 'Send',
+    'forgot_pass' => 'Forgot password',
+    'notify_mail_not_exist' => 'Email does not exist',
+    'notify_sent_link' => 'Link reset password sent your email',
+    'notify_change_pass_success' => 'Change password success',
 
 ];

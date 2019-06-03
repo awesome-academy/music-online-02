@@ -3,7 +3,7 @@
 <body class="bg-info">
     <section id="content" class="m-t-lg wrapper-md animated fadeInDown">
         <div class="container aside-xl">
-        <a class="navbar-brand block" href="index.html"><span class="h1 font-bold">{{ trans('label.music') }}</span></a> 
+        <a class="navbar-brand block" href="/"><span class="h1 font-bold">{{ trans('label.music') }}</span></a> 
         <section class="m-b-lg">
             <form action="login" method="POST">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -24,6 +24,7 @@
                     <span class="m-r-n-lg">{{ trans('label.login') }}</span>
                 </button> 
                 <div class="line line-dashed"></div>
+                <p class="text-muted text-center"><a href="forgot-pass">{{ trans('label.forgot_pass') }}</a></p>
                 <p class="text-muted text-center"><small>{{ trans('label.confirm_login') }}</small></p>
                 <a href="register" class="btn btn-lg btn-info btn-block btn-rounded">{{ trans('label.register') }}</a> 
             </form>

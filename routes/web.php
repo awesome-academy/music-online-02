@@ -76,3 +76,7 @@ Route::get('/albums/{id}', 'PageController@getJsonAlbum');
 Route::get('artist/{id}', 'PageController@artist');
 Route::resource('music', 'MusicController', ['only' => ['show']]);
 Route::resource('album', 'AlbumController', ['only' => ['show']]);
+Route::get('forgot-pass', 'Auth\ForgotPasswordController@getResetPass');
+Route::post('forgot-pass', 'Auth\ForgotPasswordController@postResetPass');
+Route::get('reset/pass', 'Auth\ForgotPasswordController@resetPass')->name('reset.pass');
+Route::post('reset/pass', 'Auth\ForgotPasswordController@saveResetPass');
