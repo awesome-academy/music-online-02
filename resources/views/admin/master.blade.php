@@ -88,7 +88,7 @@
                     <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                         <h6 class="dropdown-header">{{ trans('label.manager') }}:</h6>
                         <a class="dropdown-item" href="{{ route('categories') }}">{{ trans('label.home_category') }}</a>
-                        <a class="dropdown-item" href="#">{{ trans('label.artists') }}</a>
+                        <a class="dropdown-item" href="{{ route('artists') }}">{{ trans('label.artists') }}</a>
                         <a class="dropdown-item" href="#">{{ trans('label.music') }}</a>
                         <a class="dropdown-item" href="#">{{ trans('label.album') }}</a>
                         <a class="dropdown-item" href="#">{{ trans('label.comment') }}</a>

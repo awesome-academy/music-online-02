@@ -13,7 +13,7 @@
 				</td>
 			</tr>
 			</tr>
-				<td colspan="2" align="center"><input type="submit" value="{{ trans('label.add') }}"></td>
+				<td colspan="2" align="center"><input type="submit" class="btn btn-warning" value="{{ trans('label.add') }}"></td>
 			</tr>
 		</table>
     </form>

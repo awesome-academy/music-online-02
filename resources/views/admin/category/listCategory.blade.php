@@ -4,7 +4,7 @@
 		<div>{{ trans('validation.exists') }}</div>
 	@endif
 	<a href="{{ route('categories.add_view') }}" class="btn btn-primary">{{ trans('label.add') }}</a>
-    <table>
+    <table id="dataTable" class="table table-bordered dataTable">
 		<thead>
 			<th>{{ trans('label.id') }}</th>
 			<th>{{ trans('label.name') }}</th>
