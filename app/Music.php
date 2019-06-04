@@ -8,6 +8,19 @@ class Music extends Model
 {
     public $timestamps = 'true';
 
+    protected $fillable = [
+        'name', 
+        'lyric', 
+        'view', 
+        'path', 
+        'author', 
+        'rating', 
+        'slug', 
+        'image', 
+        'created_at', 
+        'updated_at',
+    ];
+
     public function ratings()
     {
         return $this->hasMany('App\Rating');

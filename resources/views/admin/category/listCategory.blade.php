@@ -15,9 +15,9 @@
 			<tr>	
 				<td>{{ $item->id }}</td>
 				<td>{{ $item->name }}</td>
-				<td><a href="{{ route('categories.update_view', [$item->id]) }}">{{ trans('label.update') }}</a></td>
 				<td>
-					<a href="{{ route('categories.delete', [$item->id]) }}" onclick="return confirm('ok?')">
+					<a href="{{ route('categories.update_view', [$item->id]) }}" class="btn btn-warning">{{ trans('label.update') }}</a>
+					<a href="{{ route('categories.delete', [$item->id]) }}" onclick="return confirm('ok?')" class="btn btn-danger">
 						{{ trans('label.delete') }}
 					</a>
 				</td>
