@@ -32,6 +32,8 @@ return [
     'dashboard' => 'Dashboard',
     'description' => 'Description',
     'slug' => 'Slug',
+    'path' => 'Path',
+    'author' => 'Author',
     'image' => 'Image',
     'search' => 'Search for ....',
 ];
