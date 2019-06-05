@@ -44,12 +44,12 @@
                     <b class="caret"></b> 
                 </a> 
                 <ul class="dropdown-menu animated fadeInRight">
-                @if(Auth::user()->role_id == config('home.role_admin'))  
-                <li> <span class="arrow top"></span> <a href="#">{{ trans('label.manager') }}</a> </li>
-                @endif
-                <li> <a href="#">{{ trans('label.profile') }}</a> </li>
-                <li class="divider"></li>
-                <li> <a href="{{ Auth::logout() }}">{{ trans('label.logout') }}</a> </li>
+                    @if(Auth::user()->role_id == config('home.role_admin'))  
+                    <li> <span class="arrow top"></span> <a href="#">{{ trans('label.manager') }}</a> </li>
+                    @endif
+                    <li> <a href="#">{{ trans('label.profile') }}</a> </li>
+                    <li class="divider"></li>
+                    <li> <a href="{{ Auth::logout() }}">{{ trans('label.logout') }}</a> </li>
                 </ul>
             @else
                 <li><a href="login" class="dropdown-toggle bg clear">{{ trans('label.login') }}</a></li>

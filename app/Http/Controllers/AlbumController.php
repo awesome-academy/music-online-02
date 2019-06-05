@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Music;
+use App\Album;
 
-class MusicController extends Controller
+class AlbumController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -46,15 +46,14 @@ class MusicController extends Controller
      */
     public function show($id)
     {
-        $musics = Music::findOrFail($id);
-        if (!$musics) {
+        $album = Album::findOrFail($id);
+        if (!$album) {
             return redirect('/');
         } else {
-            $songs = Music::orderBy('id', 'DESC')->skip(config('home.number.begin_music'))->take(config('home.number.end_song'))->get();
-            $comments = $musics->comments()->orderBy('id', 'DESC')->get();
-            $artists = $musics->artists()->get();
-        
-            return view('pages.music', compact('musics', 'songs', 'comments', 'artists'));
+            $musics = $album->musics()->orderBy('id', 'DESC')->get();
+            $albums = Album::orderBy('id', 'DESC')->get();
+
+            return view('pages.album', compact('album', 'musics', 'albums'));
         }
     }
 

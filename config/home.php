@@ -59,6 +59,7 @@ return [
     'image' => [
         'image_logo' => 'images/logo.png',
         'image_link' => '/',
+        'image_album' => 'album/',
     ],
     
     'template' => [

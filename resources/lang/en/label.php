@@ -28,10 +28,11 @@ return [
     'user' => 'Users',
     'leave' => 'Ready to leave',
     'cancel' => 'Cancel',
-    'logout' => 'Logout',
     'dashboard' => 'Dashboard',
     'description' => 'Description',
     'slug' => 'Slug',
     'image' => 'Image',
     'search' => 'Search for ....',
+    'info' => 'Infomation',
+
 ];
