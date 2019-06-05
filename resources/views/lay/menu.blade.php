@@ -24,7 +24,7 @@
                             <ul class="nav dk text-sm">
                                 @foreach($category as $items)
                                 <li > 
-                                    <a href="#" class="auto"> 
+                                    <a href="category/{{ $items->id }}" class="auto"> 
                                         <i class="fa fa-angle-right text-xs"></i> 
                                         <span>{{ $items->name }}</span> 
                                     </a> 
