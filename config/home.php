@@ -8,6 +8,7 @@ return [
         'begin_album' => '0',
         'end_album' => '8',
         'end_song' => '15',
+        'paginate_category' => '12',
     ],
     
     'menu' => [

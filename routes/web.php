@@ -80,3 +80,4 @@ Route::get('forgot-pass', 'Auth\ForgotPasswordController@getResetPass');
 Route::post('forgot-pass', 'Auth\ForgotPasswordController@postResetPass');
 Route::get('reset/pass', 'Auth\ForgotPasswordController@resetPass')->name('reset.pass');
 Route::post('reset/pass', 'Auth\ForgotPasswordController@saveResetPass');
+Route::get('category/{id}', 'PageController@getCategory');

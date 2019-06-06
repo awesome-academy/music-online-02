@@ -43,4 +43,12 @@ class PageController extends Controller
 
         return response()->json($music);
     }
+
+    public function getCategory($id)
+    {
+        $category = Category::findOrFail($id);
+        $music = $category->musics()->paginate(config('home.number.paginate_category'));
+
+        return view('pages.category', compact('category', 'music'));
+    }
 }
