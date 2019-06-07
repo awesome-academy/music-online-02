@@ -80,7 +80,7 @@ class MusicController extends Controller
     	$author = $music->author = $request->author;
     	$slug = $music->slug = $request->slug;
     	if ($request->image == '') {
-    		$image = $music->image = $request->dataImage;
+    		$fileName = $music->image = $request->dataImage;
     	} else {
     		if($request->hasFile('image')){
                 $file = $request->image;

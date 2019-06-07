@@ -91,6 +91,47 @@ Route::group(['prefix' => 'admin'],function()
         'as' => 'musics.delete',
         'uses' => 'admin\MusicController@deleteMusic'
     ]);
+    ////// Album
+    Route::get('/albums',[
+        'as' => 'albums',
+        'uses' => 'admin\AlbumController@listAlbum'
+    ]);
+    Route::get('/addAlbums',[
+        'as' => 'albums.add_view',
+        'uses' => 'admin\AlbumController@addViewAlbum'
+    ]);
+    Route::post('/addProcessAlbums',[
+        'as' => 'albums.add_process',
+        'uses' => 'admin\AlbumController@addProcessAlbum'
+    ]);
+    Route::get('updateAlbums/{id}',[
+        'as' => 'albums.update_view',
+        'uses' => 'admin\AlbumController@updateViewAlbum'
+    ]);
+    Route::post('updateProcessAlbums/{id}',[
+        'as' => 'albums.update_process',
+        'uses' => 'admin\AlbumController@updateProcessAlbum'
+    ]);
+    Route::get('deleteAlbums/{id}',[
+        'as' => 'albums.delete',
+        'uses' => 'admin\AlbumController@deleteAlbum'
+    ]);
+    Route::get('musicAlbumAdd/',[
+        'as' => 'albums.music_add',
+        'uses' => 'admin\AlbumController@addMusic'
+    ]);
+    Route::post('musicAlbumProcess/',[
+        'as' => 'albums.music_add_process',
+        'uses' => 'admin\AlbumController@addProcessMusic'
+    ]);
+    Route::get('musicAlbumView/{id}',[
+        'as' => 'albums.music_view',
+        'uses' => 'admin\AlbumController@listAlbumMusic'
+    ]);
+    Route::get('musicAlbumDelete/{id}/{albumId}',[
+        'as' => 'albums.music_delete',
+        'uses' => 'admin\AlbumController@deleteAlbumMusic'
+    ]);
 }
 );
 ////////////
@@ -106,3 +147,5 @@ Route::post('forgot-pass', 'Auth\ForgotPasswordController@postResetPass');
 Route::get('reset/pass', 'Auth\ForgotPasswordController@resetPass')->name('reset.pass');
 Route::post('reset/pass', 'Auth\ForgotPasswordController@saveResetPass');
 Route::get('category/{id}', 'PageController@getCategory');
+//search
+Route::get('/search', 'SearchController@searchFullText')->name('search');

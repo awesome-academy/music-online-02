@@ -28,9 +28,10 @@
                         <i class="fa fa-search"></i>
                     </button> 
                 </span> 
-                <input type="text" class="form-control input-sm no-border rounded" placeholder="{{ config('home.home_search') }}"> 
+                <input type="text" id="search" autocomplete="off" class="form-control input-sm no-border rounded" placeholder="{{ __('label.home_search') }}">
             </div>
         </div>
+        {{ csrf_field() }} 
     </form>
     <div class="navbar-right ">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user">

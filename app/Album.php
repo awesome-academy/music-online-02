@@ -8,6 +8,14 @@ class Album extends Model
 {
     public $timestamps = 'true';
 
+    protected $fillable = [
+        'name',  
+        'slug', 
+        'image', 
+        'created_at', 
+        'updated_at',
+    ];
+
     public function musics()
     {
         return $this->belongsToMany('App\Music', 'music_album', 'album_id', 'music_id');
@@ -17,4 +25,8 @@ class Album extends Model
     {
         return $this->belongsToMany('App\Artist', 'artist_album', 'album_id', 'artist_id');
     }
+
+    protected $searchable = [
+        'name',
+    ];
 }

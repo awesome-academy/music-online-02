@@ -25,9 +25,7 @@ return [
 
     'artist' => [
         'name' => 'Son Tung',
-    ], 
-
-    'home_search' => 'Search songs, albums...',
+    ],
 
     'album' => [
         'name' => 'Spring',
@@ -60,9 +58,12 @@ return [
     'image' => [
         'image_logo' => 'images/logo.png',
         'image_link' => '/',
+        'image' => 'image',
         'image_album' => 'album/',
     ],
     
+    'start_DT' => 'custom-js/dataTable.js',
+
     'template' => [
         'font_css' => 'bower_components/hoang-md-client/admin/vendor/fontawesome-free/css/all.min.css',
         'plugin' => 'bower_components/hoang-md-client/admin/vendor/datatables/dataTables.bootstrap4.css',
@@ -75,4 +76,10 @@ return [
         'js_datatable_boostrap' => 'bower_components/hoang-md-client/admin/vendor/datatables/dataTables.bootstrap4.js',
         'js_main' => 'bower_components/hoang-md-client/admin/js/sb-admin.min.js'
     ],
+
+    'link' => [
+        'ajax' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js',
+        'typehead' => 'https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js',
+    ],
+
 ];
