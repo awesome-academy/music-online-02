@@ -17,4 +17,8 @@ class Album extends Model
     {
         return $this->belongsToMany('App\Artist', 'artist_album', 'album_id', 'artist_id');
     }
+
+    protected $searchable = [
+        'name',
+    ];
 }

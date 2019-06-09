@@ -25,9 +25,7 @@ return [
 
     'artist' => [
         'name' => 'Son Tung',
-    ], 
-
-    'home_search' => 'Search songs, albums...',
+    ],
 
     'album' => [
         'name' => 'Spring',
@@ -75,4 +73,10 @@ return [
         'js_datatable_boostrap' => 'bower_components/hoang-md-client/admin/vendor/datatables/dataTables.bootstrap4.js',
         'js_main' => 'bower_components/hoang-md-client/admin/js/sb-admin.min.js'
     ],
+
+    'link' => [
+        'ajax' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js',
+        'typehead' => 'https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js',
+    ],
+
 ];
