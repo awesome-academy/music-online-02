@@ -111,3 +111,51 @@ jQuery(document).ready(function($) {
         }
     });
 });
+
+//comment
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+$(document).ready(function(){
+    $("#submit_comment").click(function(){
+        
+        content = $("#content_comment").val();
+        musicId = $("#music_comment").val();
+        userId = $("#user_comment").val();
+        
+        if (userId == '') {
+            $("#content_comment").val('');
+            document.getElementById("noti").innerHTML = "Please login";
+        } else {
+            $.ajax({
+                url: 'comment',
+                type: 'POST',
+                data: "content=" + content + "&userId=" + userId + "&musicId=" + musicId,
+                success: function(res){
+                    $template =
+                    `
+                    <article id="comment-id-1" class="comment-item">
+                        <a class="pull-left thumb-sm"> 
+                            <img src="` + res.image + `" class="img-circle"> 
+                        </a> 
+                        <section class="comment-body m-b">
+                            <header> 
+                                <a href="#"><strong>` + res.name + `</strong></a> 
+                                <span class="text-muted text-xs block m-t-xs">just now</span> 
+                            </header>
+                            <div class="m-t-sm">` + res.content + `</div>
+                        </section>
+                    </article>
+                    `
+                    $("#line-comment").prepend($template);
+                    $("#content_comment").val('');
+                }
+                
+            })
+        }
+         
+        return false;
+    });
+});

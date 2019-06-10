@@ -34,17 +34,28 @@
                            </div>
                            <div class="col-xs-12">
                               <form>
+                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                  <div class="form-group"> 
                                     <label>{{ config('home.comment.comment') }}</label> 
-                                    <textarea class="form-control" rows="5"></textarea> 
+                                    <textarea id="content_comment" name="content_comment" class="form-control" rows="5"></textarea> 
                                  </div>
+                                 <p id="noti"></p>
+                                 <input type="hidden" id="music_comment" name="music_comment" value="{{ $musics->id }}">
+                                 @php
+                                 if (!(session('info_user'))) {
+                                    $user_id = '';
+                                 } else {
+                                    $user_id = session('info_user')[0]->id;
+                                 }
+                                 @endphp
+                                 <input type="hidden" id="user_comment" name="user_comment" value="{{ $user_id }}">
                                  <div class="form-group"> 
-                                    <button type="submit" class="btn btn-success">{{ config('home.comment.submit') }}</button> 
+                                    <button type="submit" id="submit_comment" class="btn btn-success">{{ config('home.comment.submit') }}</button> 
                                  </div>
                               </form>
                            </div>
                            <div class="col-xs-12">
-                              <section class=" block">
+                              <section class=" block" id="line-comment">
                                  @foreach ($comments as $item) 
                                  <article id="comment-id-1" class="comment-item">
                                     <a class="pull-left thumb-sm"> 
@@ -53,7 +64,12 @@
                                     <section class="comment-body m-b">
                                        <header> 
                                           <a href="#"><strong>{{ $item->user()->first()->name }}</strong></a> 
-                                          {{-- <span class="text-muted text-xs block m-t-xs"> 24 minutes ago </span>  --}}
+                                          @php
+                                             $time = $item->created_at;
+                                             $dt = Carbon::create($time->year, $time->month, $time->day, $time->hour, $time->minute, $time->second);
+                                             $now = Carbon::now();
+                                          @endphp
+                                          <span class="text-muted text-xs block m-t-xs">{{ $dt->diffForHumans($now) }}</span> 
                                        </header>
                                        <div class="m-t-sm">{{ $item->content }}</div>
                                     </section>
@@ -104,5 +120,5 @@
       </section>
    </section>
 </section>
-<input type="hidden" id="song" value="{{ $musics->id }}">
+<input type="hidden" id="song" name="song" value="{{ $musics->id }}">
 @endsection

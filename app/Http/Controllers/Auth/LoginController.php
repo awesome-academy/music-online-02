@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\User;
 
 class LoginController extends Controller
 {
@@ -43,6 +43,11 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if (Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
+             
+            $request->session()->put('username', $request->name);
+            $data = User::where('name', $request->name)->get();
+            session()->put('info_user', $data);
+
             return redirect('/');
         } else {
             return redirect('login')->with('notify', 'Login failed');

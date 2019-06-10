@@ -6,6 +6,7 @@ use App\Artist;
 use App\Album;
 use App\User;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\HomeRegisterRequest;
 
 class PageController extends Controller
@@ -50,5 +51,13 @@ class PageController extends Controller
         $music = $category->musics()->paginate(config('home.number.paginate_category'));
 
         return view('pages.category', compact('category', 'music'));
+    }
+
+    public function logout(){
+        Auth::logout();
+        session()->forget('username');
+        session()->forget('info_user');
+
+        return redirect('/');
     }
 }

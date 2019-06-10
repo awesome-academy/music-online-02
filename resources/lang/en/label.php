@@ -46,5 +46,6 @@ return [
     'notify_change_pass_success' => 'Change password success',
     'home_search' => 'Search songs...',
     'not_found' => 'Not found',
+    'just_now' => 'just now',
 
 ];
