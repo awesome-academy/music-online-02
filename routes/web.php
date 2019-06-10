@@ -106,3 +106,5 @@ Route::post('forgot-pass', 'Auth\ForgotPasswordController@postResetPass');
 Route::get('reset/pass', 'Auth\ForgotPasswordController@resetPass')->name('reset.pass');
 Route::post('reset/pass', 'Auth\ForgotPasswordController@saveResetPass');
 Route::get('category/{id}', 'PageController@getCategory');
+//search
+Route::get('/search', 'SearchController@searchFullText')->name('search');

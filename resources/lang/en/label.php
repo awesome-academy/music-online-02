@@ -41,5 +41,7 @@ return [
     'notify_mail_not_exist' => 'Email does not exist',
     'notify_sent_link' => 'Link reset password sent your email',
     'notify_change_pass_success' => 'Change password success',
+    'home_search' => 'Search songs...',
+    'not_found' => 'Not found',
 
 ];

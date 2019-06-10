@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\SearchFullText;
 
 class Music extends Model
 {
+    use SearchFullText;
+
     public $timestamps = 'true';
 
     protected $fillable = [
@@ -50,4 +53,8 @@ class Music extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    protected $searchable = [
+        'name',
+    ];
 }
