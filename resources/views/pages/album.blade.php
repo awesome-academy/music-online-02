@@ -33,7 +33,7 @@
                                                 </a> 
                                             </div>
                                             <div class="play-music">
-                                                <a href="javascript:;" class="jp-play-me m-r-sm pull-left"> 
+                                                <a href="javascript:;" class="jp-play-me m-r-sm pull-left" onclick="play({{ $item->id }})"> 
                                                     <i class="icon-control-play text"></i> 
                                                     <i class="icon-control-pause text-active"></i> 
                                                 </a> 
@@ -53,7 +53,7 @@
                                 <section class="scrollable hover">
                                     <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
                                         @foreach ($albums as $item)
-                                        <li class="list-group-item clearfix"> 
+                                        <li class="play-album list-group-item clearfix" data-id={{ $item->id }}> 
                                             <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md"> 
                                                 <i class="icon-control-play text"></i> 
                                                 <i class="icon-control-pause text-active"></i> 
@@ -82,5 +82,4 @@
         </section>
     </section>
 </section>
-<input type="hidden" id="album" value="{{ $album->id }}">
 @endsection
