@@ -36,15 +36,15 @@ class MusicController extends Controller
     	try {
           	DB::beginTransaction();
           	$music = new Music();
+            $data = $request->all();
     		if ($request->hasFile('image')) {
     			$file = $request->image;
     			$fileName = $file->getClientOriginalName('image');
     			$path = 'image';
     			$file->move($path, $fileName);
     		} 
-        	$updated = $music->updated_at = now();
-        	$created = $music->created_at = now();
-            $music = Music::create($request->all());
+            $data['image'] = $fileName;
+            $music = Music::create($data);
 
             $artist = new Artist();
             $artist = $music->artists()->attach($music->id, ['artist_id' => $request->artist]); /// them vao bang artist trung gian

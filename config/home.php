@@ -58,9 +58,12 @@ return [
     'image' => [
         'image_logo' => 'images/logo.png',
         'image_link' => '/',
+        'image' => 'image',
         'image_album' => 'album/',
     ],
     
+    'start_DT' => 'custom-js/dataTable.js',
+
     'template' => [
         'font_css' => 'bower_components/hoang-md-client/admin/vendor/fontawesome-free/css/all.min.css',
         'plugin' => 'bower_components/hoang-md-client/admin/vendor/datatables/dataTables.bootstrap4.css',
