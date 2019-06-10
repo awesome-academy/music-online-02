@@ -90,7 +90,7 @@
                         <a class="dropdown-item" href="{{ route('categories') }}">{{ trans('label.home_category') }}</a>
                         <a class="dropdown-item" href="{{ route('artists') }}">{{ trans('label.artists') }}</a>
                         <a class="dropdown-item" href="{{ route('musics') }}">{{ trans('label.music') }}</a>
-                        <a class="dropdown-item" href="#">{{ trans('label.album') }}</a>
+                        <a class="dropdown-item" href="{{ route('albums') }}">{{ trans('label.album') }}</a>
                         <a class="dropdown-item" href="#">{{ trans('label.comment') }}</a>
                         <a class="dropdown-item" href="#">{{ trans('label.role') }}</a>
                         <a class="dropdown-item" href="#">{{ trans('label.rating') }}</a>
@@ -100,7 +100,7 @@
             </ul>
             <div id="content-wrapper">
                 <div class="container-fluid">
-    			    @yield('content')
+                    @yield('content')
                 </div>
                 <!-- /.container-fluid -->
             </div>
@@ -140,5 +140,6 @@
         <script src="{{ config('home.template.js_datatable_boostrap') }}"></script>
         <!-- Custom scripts for all pages-->
         <script src="{{ config('home.template.js_main') }}"></script>
+        <script src="{{ config('home.start_DT') }}"></script>
     </body>
 </html>

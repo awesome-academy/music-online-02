@@ -24,6 +24,7 @@ return [
     'add' => 'Add',
     'comment' => 'Comments',
     'role' => 'Roles',
+    'add_music' => 'Add music to Album',
     'rating' => 'Ratings',
     'user' => 'Users',
     'leave' => 'Ready to leave',

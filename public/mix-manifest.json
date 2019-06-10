@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/custom-js/mjs.js": "/custom-js/mjs.js"
+    "/custom-js/mjs.js": "/custom-js/mjs.js",
+    "/custom-js/dataTable.js": "/custom-js/dataTable.js"
 }
