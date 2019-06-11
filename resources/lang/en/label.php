@@ -31,6 +31,8 @@ return [
     'cancel' => 'Cancel',
     'dashboard' => 'Dashboard',
     'description' => 'Description',
+    'delete_success' => 'Delete Success',
+    'delete_fail' => 'Can Not Delete Admin',
     'slug' => 'Slug',
     'path' => 'Path',
     'author' => 'Author',

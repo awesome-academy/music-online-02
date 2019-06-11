@@ -64,6 +64,8 @@ return [
     
     'start_DT' => 'custom-js/dataTable.js',
 
+    'change_role' => 'custom-js/changeRole.js',
+
     'template' => [
         'font_css' => 'bower_components/hoang-md-client/admin/vendor/fontawesome-free/css/all.min.css',
         'plugin' => 'bower_components/hoang-md-client/admin/vendor/datatables/dataTables.bootstrap4.css',

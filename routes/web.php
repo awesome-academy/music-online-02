@@ -132,6 +132,52 @@ Route::group(['prefix' => 'admin'],function()
         'as' => 'albums.music_delete',
         'uses' => 'admin\AlbumController@deleteAlbumMusic'
     ]);
+    ////////////////////////////////// Role
+    Route::get('/Roles',[
+        'as' => 'roles',
+        'uses' => 'admin\RoleController@listRole'
+    ]);
+    Route::get('/addRoles',[
+        'as' => 'roles.add_view',
+        'uses' => 'admin\RoleController@addViewRole'
+    ]);
+    Route::post('/addProcessRoles',[
+        'as' => 'roles.add_process',
+        'uses' => 'admin\RoleController@addProcessRole'
+    ]);
+    Route::get('updateRoles/{id}',[
+        'as' => 'roles.update_view',
+        'uses' => 'admin\RoleController@updateViewRole'
+    ]);
+    Route::post('updateProcessRoles/{id}',[
+        'as' => 'roles.update_process',
+        'uses' => 'admin\RoleController@updateProcessRole'
+    ]);
+    Route::get('deleteRoles/{id}',[
+        'as' => 'roles.delete',
+        'uses' => 'admin\RoleController@deleteRole'
+    ]);
+    /////// uSer
+    Route::get('/Users',[
+        'as' => 'users',
+        'uses' => 'admin\UserController@listUser'
+    ]);
+    Route::get('updateUsers/{id}',[
+        'as' => 'users.update_view',
+        'uses' => 'admin\UserController@updateViewUser'
+    ]);
+    Route::post('updateProcessUsers/{id}',[
+        'as' => 'users.update_process',
+        'uses' => 'admin\UserController@updateProcessUser'
+    ]);
+    Route::get('deleteUsers/{id}',[
+        'as' => 'users.delete',
+        'uses' => 'admin\UserController@deleteUser'
+    ]);
+    Route::post('changeRoles/{id}',[
+        'as' => 'users.change',
+        'uses' => 'admin\UserController@changeRole'
+    ]);
 }
 );
 ////////////
