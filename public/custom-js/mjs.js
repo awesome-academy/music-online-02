@@ -35,8 +35,44 @@ function play(songId) {
 }
 
 window.onload = function() {
-    play($( "#song" ).val())
+    play($("#song").val())
 };
+
+$(document).ready(function() {
+    var url = window.location.pathname;
+    var res = url.split("/");
+    var albumId = res[2];
+    
+    $.ajax({
+        type: 'GET',
+        url: '/albums/' + albumId,
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (res) {
+            var myPlaylist = new jPlayerPlaylist({
+                jPlayer: "#jplayer_N",
+                cssSelectorAncestor: "#jp_container_N",
+            }, {
+                playlistOptions: {
+                    enableRemoveControls: true,
+                    autoPlay: true,
+                },
+                swfPath: "js/jPlayer",
+                supplied: "webmv, ogv, m4v, oga, mp3",
+                smoothPlayBar: true,
+                keyEnabled: true,
+                audioFullScreen: false,
+            });
+            res.forEach(element => {
+                myPlaylist.add({
+                    title: element.name,
+                    mp3: element.path,
+                }) 
+            });
+        }
+    });
+});
 
 // js search
 jQuery(document).ready(function($) {

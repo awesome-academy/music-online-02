@@ -50,7 +50,7 @@ class AlbumController extends Controller
         if (!$album) {
             return redirect('/');
         } else {
-            $musics = $album->musics()->orderBy('id', 'DESC')->get();
+            $musics = $album->musics()->get();
             $albums = Album::orderBy('id', 'DESC')->get();
 
             return view('pages.album', compact('album', 'musics', 'albums'));
