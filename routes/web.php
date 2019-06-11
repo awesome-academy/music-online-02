@@ -14,7 +14,7 @@ use App\Http\Controllers\CommentController;
 */
 
 Route::group(['middleware' => 'checkuser'], function(){
-    Route::group(['prefix' => 'admin'],function()
+    Route::group(['prefix' => 'admin'], function()
     {
         Route::get('/',[
             'as' => 'home_ad.',
@@ -183,7 +183,6 @@ Route::group(['middleware' => 'checkuser'], function(){
         ]);
     });
 });
-
 ////////////
 Auth::routes();
 Route::get('/logout', 'PageController@logout');
@@ -202,3 +201,10 @@ Route::get('category/{id}', 'PageController@getCategory');
 Route::get('/search', 'SearchController@searchFullText')->name('search');
 //comment
 Route::post('/comment', 'CommentController@comment')->name('comment');
+//playlist
+Route::group(['prefix' => 'playlist'], function()
+{
+    Route::post('/create', 'PlaylistController@create')->name('create_playlist');
+    Route::get('/load/{user_id}', 'PlaylistController@load');
+    Route::post('/add', 'PlaylistController@add');
+});

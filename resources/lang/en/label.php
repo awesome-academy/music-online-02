@@ -47,5 +47,9 @@ return [
     'home_search' => 'Search songs...',
     'not_found' => 'Not found',
     'just_now' => 'just now',
+    'create_playlist' => 'Create playlist',
+    'submit' => 'Submit',
+    'add_to_queue' => 'Add to queue',
+    'add_to_playlist' => 'Add to playlist',
 
 ];

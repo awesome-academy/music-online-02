@@ -159,3 +159,52 @@ $(document).ready(function(){
         return false;
     });
 });
+
+// playlist
+$(".plus").on("click", function (e) {
+    userID = $("#user_playlist").val();
+    let musicID = $(this).data("id");
+    $.ajax({
+        type: 'GET',
+        url: 'playlist/load/' + userID,
+        dataType: 'json',
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(res) {
+            $('#modal_playlist').empty();
+            res.forEach(function(element) {
+                $temp = 
+                `
+                <div>
+                    <i class="icon-playlist icon text-success-lter"></i>
+                    <li data-id ="`+ element.id +`" class="item_p_list" data-dismiss="modal"><a href="javascript:;">`+ element.name +`</a></li>
+                    <hr>
+                </div>
+                `
+                $("#modal_playlist").prepend($temp);
+                $("li").css({"display": "inline-block", "margin-left": "10px"});
+                $("i").css({"display": "inline-block"});
+            });
+            
+            // add to playlist
+            $(".item_p_list").on("click", function (e) {
+                let playlistID = $(this).data("id");
+                $.ajax({
+                    type: 'POST',
+                    url: 'playlist/add/',
+                    data: "playlistID=" + playlistID + "&musicID=" + musicID,
+                    success: function(res) {
+                        Swal.fire({
+                            position: 'center',
+                            type: 'success',
+                            title: 'Success !',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    },             
+                }); 
+            });
+        },    
+    });
+});

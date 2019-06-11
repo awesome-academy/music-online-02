@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "bloodhound-js": "^1.2.3",
+        "sweetalert": "^2.1.2",
+        "sweetalert2": "^8.12.1",
         "typeahead": "^0.2.2"
     }
 }

@@ -12,4 +12,9 @@ class Playlist extends Model
     {
         return $this->belongsToMany('App\Music', 'music_playlist', 'playlist_id', 'music_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
