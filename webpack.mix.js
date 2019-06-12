@@ -16,5 +16,6 @@ mix.js('resources/js/app.js', 'public/js')
 
 mix.copy([
     'resources/js/mjs.js',
-     'resources/js/dataTable.js',
+    'resources/js/dataTable.js',
+    'resources/js/changeRole.js',
 ], 'public/custom-js');
