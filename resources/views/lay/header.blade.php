@@ -36,21 +36,21 @@
     <div class="navbar-right ">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user">
             <li class="dropdown">
-            @if(Auth::check())       
+            @if(session('username'))       
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"> 
                     <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm"> 
-                        <img src="{{ Auth::user()->image }}"> 
+                        <img src="{{ session('info_user')[0]->image }}"> 
                     </span>
-                    {{ Auth::user()->name }}
+                    {{ session('info_user')[0]->name }}
                     <b class="caret"></b> 
                 </a> 
                 <ul class="dropdown-menu animated fadeInRight">
-                    @if(Auth::user()->role_id == config('home.role_admin'))  
+                    @if(session('info_user')[0]->role_id == config('home.role_admin'))  
                     <li> <span class="arrow top"></span> <a href="#">{{ trans('label.manager') }}</a> </li>
                     @endif
                     <li> <a href="#">{{ trans('label.profile') }}</a> </li>
                     <li class="divider"></li>
-                    <li> <a href="{{ Auth::logout() }}">{{ trans('label.logout') }}</a> </li>
+                    <li> <a href="logout">{{ trans('label.logout') }}</a> </li>
                 </ul>
             @else
                 <li><a href="login" class="dropdown-toggle bg clear">{{ trans('label.login') }}</a></li>
