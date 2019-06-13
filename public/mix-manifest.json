@@ -3,5 +3,8 @@
     "/css/app.css": "/css/app.css",
     "/custom-js/mjs.js": "/custom-js/mjs.js",
     "/custom-js/dataTable.js": "/custom-js/dataTable.js",
-    "/custom-js/changeRole.js": "/custom-js/changeRole.js"
+    "/custom-js/changeRole.js": "/custom-js/changeRole.js",
+    "/custom-js/search.js": "/custom-js/search.js",
+    "/custom-js/comment.js": "/custom-js/comment.js",
+    "/custom-js/review_image.js": "/custom-js/review_image.js"
 }

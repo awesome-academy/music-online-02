@@ -42,6 +42,7 @@ class LoginController extends Controller
             session()->put('user_id', $data[0]->id);
             session()->put('name', $request->name);
             session()->put('role_id', $data[0]->role_id);
+            session()->put('info_user', $data);
 
             return redirect('/');
         } else {

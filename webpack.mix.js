@@ -18,4 +18,7 @@ mix.copy([
     'resources/js/mjs.js',
     'resources/js/dataTable.js',
     'resources/js/changeRole.js',
+    'resources/js/search.js',
+    'resources/js/comment.js',
+    'resources/js/review_image.js',
 ], 'public/custom-js');
