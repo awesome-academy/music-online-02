@@ -61,5 +61,8 @@ return [
     'submit' => 'Submit',
     'add_to_queue' => 'Add to queue',
     'add_to_playlist' => 'Add to playlist',
+    'edit' => 'Edit',
+    'cancel' => 'Cancel',
+    'delete' => 'Delete',
 
 ];

@@ -57,7 +57,7 @@
                            <div class="col-xs-12">
                               <section class=" block" id="line-comment">
                                  @foreach ($comments as $item) 
-                                 <article id="comment-id-1" class="comment-item">
+                                 <article id="comment-id-{{ $item->id }}" class="comment-item">
                                     <a class="pull-left thumb-sm"> 
                                        <img src="{{ $item->user()->first()->image }}" class="img-circle"> 
                                     </a> 
@@ -71,7 +71,40 @@
                                           @endphp
                                           <span class="text-muted text-xs block m-t-xs">{{ $dt->diffForHumans($now) }}</span> 
                                        </header>
-                                       <div class="m-t-sm">{{ $item->content }}</div>
+                                       <div class="row">
+                                          @php
+                                             if (!session('info_user')) {
+                                                $id_user_login = '';
+                                             } else {
+                                                $id_user_login = session('info_user')[0]->id;
+                                             }
+                                             $id_user_comment = $item->user()->first()->id;
+                                          @endphp
+                                          <div class="col-md-10 m-t-sm" id="label-content-{{ $item->id }}">{{ $item->content }}</div>
+                                          @if ($id_user_login == config('home.role_admin') && $id_user_login == $id_user_comment)
+                                             <div class="col-md-1"><a class="edit_comment" data-id ="{{ $item->id }}" data-content ="{{ $item->content }}" href="javascript:;">{{ __('label.edit') }}</a></div>
+                                             <div class="col-md-1"><a class="delete_comment" data-id="{{ $item->id }}" href="javascript:;">Delete</a></div>
+
+                                          @elseif ($id_user_login != config('home.role_admin') && $id_user_login == $id_user_comment)
+                                             <div class="col-md-1"><a class="edit_comment" data-id="{{ $item->id }}" data-content ="{{ $item->content }}" href="javascript:;">{{ __('label.edit') }}</a></div>
+                                             <div class="col-md-1"><a class="delete_comment" data-id="{{ $item->id }}" href="javascript:;">{{ __('label.delete') }}</a></div>
+
+                                          @elseif ($id_user_login == config('home.role_admin') && $id_user_login != $id_user_comment)
+                                             <div class="col-md-1"></div>
+                                             <div class="col-md-1"><a class="delete_comment" data-id="{{ $item->id }}" href="javascript:;">{{ __('label.delete') }}</a></div>
+                                          @endif
+                                       </div>
+                                       <div>
+                                          <form action="" class="frm_edit_comment" id="edit-comment-id-{{ $item->id }}">
+                                             <div class="row">
+                                                <textarea class="form-control" name="" id="textarea-edit-{{ $item->id }}" rows="2"></textarea>
+                                             </div>
+                                             <div class="row">
+                                                <button type="submit" class="btn btn-success"><a class="submit-edit" id="btn-edit-{{ $item->id }}">{{ __('label.edit') }}</a></button>
+                                                <button type="submit" class="btn btn-success"><a class="cancel-edit" href="javascript:;">{{ __('label.cancel') }}</a></button>
+                                             </div>
+                                          </form>
+                                       </div>
                                     </section>
                                  </article>
                                  @endforeach

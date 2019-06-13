@@ -42,13 +42,20 @@
                             </span>
                             {{ trans('label.home_playlist') }}
                         </li>
-                        <li> 
-                            <a href="#"> 
-                                <i class="icon-playlist icon text-success-lter"></i> 
-                                <b class="badge bg-success dker pull-right">9</b> 
-                                <span>{{ config('home.menu.playlist') }}</span> 
-                            </a> 
-                        </li>
+                        @if ($playlist != '')
+                            @foreach ($playlist as $item)
+                                @php
+                                    $count_musics = $item->musics()->count();
+                                @endphp
+                            <li> 
+                                <a href="#"> 
+                                    <i class="icon-playlist icon text-success-lter"></i> 
+                                    <b class="badge bg-success dker pull-right">{{ $count_musics }}</b> 
+                                    <span>{{ $item->name }}</span> 
+                                </a> 
+                            </li> 
+                            @endforeach
+                        @endif
                     </ul>
                 </nav>
                 <!-- / nav --> 

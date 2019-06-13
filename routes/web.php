@@ -211,5 +211,11 @@ Route::group(['middleware' => 'locale'], function() {
         Route::post('/add', 'PlaylistController@add');
     });
     Auth::routes();
+    Route::group(['prefix' => 'comment'], function()
+    {
+        Route::post('/add', 'CommentController@comment');
+        Route::get('/delete/{id}', 'CommentController@delete');
+        Route::post('/edit', 'CommentController@edit');
+    });
 });
 Route::get('/changeLang{lang}', 'HomeController@changeLang')->name('lang.change');
