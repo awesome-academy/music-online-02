@@ -46,7 +46,7 @@
                 </a> 
                 <ul class="dropdown-menu animated fadeInRight">
                     @if(session('info_user')[0]->role_id == config('home.role_admin'))  
-                    <li> <span class="arrow top"></span> <a href="#">{{ trans('label.manager') }}</a> </li>
+                    <li> <span class="arrow top"></span> <a href="admin">{{ trans('label.manager') }}</a> </li>
                     @endif
                     <li> <a href="#">{{ trans('label.profile') }}</a> </li>
                     <li class="divider"></li>

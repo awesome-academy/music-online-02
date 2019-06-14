@@ -43,7 +43,6 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         if (Auth::attempt(['name' => $request->name, 'password' => $request->password])) {
-             
             $request->session()->put('username', $request->name);
             $data = User::where('name', $request->name)->get();
             session()->put('info_user', $data);
