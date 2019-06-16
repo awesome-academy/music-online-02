@@ -111,6 +111,86 @@ jQuery(document).ready(function($) {
         }
     });
 });
+//////// xem truoc anh
+function  readURL(input,thumbimage) {
+    var  reader = new FileReader();
+    reader.onload = function (e) 
+    {
+        $("#thumbimage").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(input.files[0]);
+    $("#thumbimage").show();
+    $(".filename").text($("#uploadfile").val());
+    $(".Choicefile").css("background", "#C4C4C4");
+    $(".Choicefile").css("cursor", "default");
+    $(".removeimg").show();
+    $(".Choicefile").unbind("click"); //Xóa sự kiện  click trên nút .Choicefile
+}
+    $(".Choicefile").bind("click", function  () 
+    { //Chọn file khi .Choicefile Click
+        $("#uploadfile").click();         
+    });
+    $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
+        $("#thumbimage").attr("src", "").hide();
+        $("#myfileupload").html("<input type='file' id='uploadfile'  onchange='readURL(this);' />");
+        $(".removeimg").hide();
+        $(".Choicefile").bind("click", function  () 
+        {//Tạo lại sự kiện click để chọn file
+            $("#uploadfile").click();
+        });
+        $(".Choicefile").css("background","#0877D8");
+        $(".Choicefile").css("cursor", "pointer");
+        $(".filename").text("");
+   });
+
+// playlist
+$(".plus").on("click", function (e) {
+    userID = $("#user_playlist").val();
+    let musicID = $(this).data("id");
+    $.ajax({
+        type: 'GET',
+        url: 'playlist/load/' + userID,
+        dataType: 'json',
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(res) {
+            $('#modal_playlist').empty();
+            res.forEach(function(element) {
+                $temp = 
+                `
+                <div>
+                    <i class="icon-playlist icon text-success-lter"></i>
+                    <li data-id ="`+ element.id +`" class="item_p_list" data-dismiss="modal"><a href="javascript:;">`+ element.name +`</a></li>
+                    <hr>
+                </div>
+                `
+                $("#modal_playlist").prepend($temp);
+                $("li").css({"display": "inline-block", "margin-left": "10px"});
+                $("i").css({"display": "inline-block"});
+            });
+
+            // add to playlist
+            $(".item_p_list").on("click", function (e) {
+                let playlistID = $(this).data("id");
+                $.ajax({
+                    type: 'POST',
+                    url: 'playlist/add/',
+                    data: "playlistID=" + playlistID + "&musicID=" + musicID,
+                    success: function(res) {
+                        Swal.fire({
+                            position: 'center',
+                            type: 'success',
+                            title: 'Success !',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    },             
+                }); 
+            });
+        },    
+    });
+});
 
 //comment
 $.ajaxSetup({
@@ -157,54 +237,5 @@ $(document).ready(function(){
         }
          
         return false;
-    });
-});
-
-// playlist
-$(".plus").on("click", function (e) {
-    userID = $("#user_playlist").val();
-    let musicID = $(this).data("id");
-    $.ajax({
-        type: 'GET',
-        url: 'playlist/load/' + userID,
-        dataType: 'json',
-        data: {
-            _token: $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(res) {
-            $('#modal_playlist').empty();
-            res.forEach(function(element) {
-                $temp = 
-                `
-                <div>
-                    <i class="icon-playlist icon text-success-lter"></i>
-                    <li data-id ="`+ element.id +`" class="item_p_list" data-dismiss="modal"><a href="javascript:;">`+ element.name +`</a></li>
-                    <hr>
-                </div>
-                `
-                $("#modal_playlist").prepend($temp);
-                $("li").css({"display": "inline-block", "margin-left": "10px"});
-                $("i").css({"display": "inline-block"});
-            });
-            
-            // add to playlist
-            $(".item_p_list").on("click", function (e) {
-                let playlistID = $(this).data("id");
-                $.ajax({
-                    type: 'POST',
-                    url: 'playlist/add/',
-                    data: "playlistID=" + playlistID + "&musicID=" + musicID,
-                    success: function(res) {
-                        Swal.fire({
-                            position: 'center',
-                            type: 'success',
-                            title: 'Success !',
-                            showConfirmButton: false,
-                            timer: 1500
-                        })
-                    },             
-                }); 
-            });
-        },    
     });
 });
