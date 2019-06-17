@@ -36,19 +36,19 @@
     <div class="navbar-right ">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user">
             <li class="dropdown">
-            @if(session('username'))       
+            @if(Session::has('name'))       
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"> 
                     <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm"> 
-                        <img src="{{ session('info_user')[0]->image }}"> 
+                        <img src="image/{{ Session::get('avatar') }}"> 
                     </span>
-                    {{ session('info_user')[0]->name }}
+                    {{ Session::get('name') }}
                     <b class="caret"></b> 
                 </a> 
                 <ul class="dropdown-menu animated fadeInRight">
-                    @if(session('info_user')[0]->role_id == config('home.role_admin'))  
-                    <li> <span class="arrow top"></span> <a href="admin">{{ trans('label.manager') }}</a> </li>
+                    @if(Session::get('role_id') == config('home.role_admin'))  
+                    <li> <span class="arrow top"></span> <a href="#">{{ trans('label.manager') }}</a> </li>
                     @endif
-                    <li> <a href="#">{{ trans('label.profile') }}</a> </li>
+                    <li> <a href="{{ route('profile.view', [Session::get('user_id')]) }}">{{ trans('label.profile') }}</a> </li>
                     <li class="divider"></li>
                     <li> <a href="logout">{{ trans('label.logout') }}</a> </li>
                 </ul>
@@ -56,6 +56,23 @@
                 <li><a href="login" class="dropdown-toggle bg clear">{{ trans('label.login') }}</a></li>
                 <li><a href="register" class="dropdown-toggle bg clear">{{ trans('label.register') }}</a></li>
             @endif
+            </li>
+        </ul>
+    </div>
+    <div class="navbar-right ">
+        <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+            <li class="dropdown">    
+                <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"> 
+                    <!-- <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm"> 
+                    </span> -->
+                    lang
+                    <b class="caret"></b> 
+                </a> 
+                <ul class="dropdown-menu animated fadeInRight">       
+                    <li> <a href="{{ route('lang.change', ['vn']) }}">vn</a> </li>
+                    <li class="divider"></li>
+                    <li> <a href="{{ route('lang.change', ['en']) }}">en</a> </li>
+                </ul>
             </li>
         </ul>
     </div>

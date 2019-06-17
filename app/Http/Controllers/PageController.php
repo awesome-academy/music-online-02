@@ -60,4 +60,10 @@ class PageController extends Controller
 
         return redirect('/');
     }
+
+    public function profile($id){
+        $users = User::findOrFail($id);
+
+        return view('pages.profile', compact('users'));
+    }
 }
