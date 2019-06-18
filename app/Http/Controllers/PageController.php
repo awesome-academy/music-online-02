@@ -57,6 +57,7 @@ class PageController extends Controller
         Auth::logout();
         session()->forget('username');
         session()->forget('info_user');
+        session()->forget('name');
 
         return redirect('/');
     }

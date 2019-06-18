@@ -76,80 +76,13 @@ $(document).ready(function() {
     });
 });
 
-// js search
-jQuery(document).ready(function($) {
-    var engine = new Bloodhound({
-        remote: {
-            url: '/search?q=%QUERY%',
-            wildcard: '%QUERY%'
-        },
-        datumTokenizer: Bloodhound.tokenizers.whitespace('q'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace
-    });
-
-    $("#search").typeahead({
-        hint: true,
-        highlight: true,
-        minLength: 1
-    }, {
-        source: engine.ttAdapter(),
-        name: 'list',
-        templates: {
-            empty: [
-                `
-                <div class="list-group search-results-dropdown">
-                    <div class="list-group-item">Not found</div>
-                </div>
-                `
-            ],
-            header: [
-                '<div class="list-group search-results-dropdown">'
-            ],
-            suggestion: function (data) {
-                return '<a href="/music/' + data.id + '" class="list-group-item">' + data.name + '</a>'
-            }
-        }
-    });
-});
-//////// xem truoc anh
-function  readURL(input,thumbimage) {
-    var  reader = new FileReader();
-    reader.onload = function (e) 
-    {
-        $("#thumbimage").attr('src', e.target.result);
-    }
-    reader.readAsDataURL(input.files[0]);
-    $("#thumbimage").show();
-    $(".filename").text($("#uploadfile").val());
-    $(".Choicefile").css("background", "#C4C4C4");
-    $(".Choicefile").css("cursor", "default");
-    $(".removeimg").show();
-    $(".Choicefile").unbind("click"); //Xóa sự kiện  click trên nút .Choicefile
-}
-    $(".Choicefile").bind("click", function  () 
-    { //Chọn file khi .Choicefile Click
-        $("#uploadfile").click();         
-    });
-    $(".removeimg").click(function () {//Xóa hình  ảnh đang xem
-        $("#thumbimage").attr("src", "").hide();
-        $("#myfileupload").html("<input type='file' id='uploadfile'  onchange='readURL(this);' />");
-        $(".removeimg").hide();
-        $(".Choicefile").bind("click", function  () 
-        {//Tạo lại sự kiện click để chọn file
-            $("#uploadfile").click();
-        });
-        $(".Choicefile").css("background","#0877D8");
-        $(".Choicefile").css("cursor", "pointer");
-        $(".filename").text("");
-   });
-
 // playlist
 $(".plus").on("click", function (e) {
     userID = $("#user_playlist").val();
     let musicID = $(this).data("id");
     $.ajax({
         type: 'GET',
-        url: 'playlist/load/' + userID,
+        url: '/playlist/load/' + userID,
         dataType: 'json',
         data: {
             _token: $('meta[name="csrf-token"]').attr('content')
@@ -189,53 +122,5 @@ $(".plus").on("click", function (e) {
                 }); 
             });
         },    
-    });
-});
-
-//comment
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-$(document).ready(function(){
-    $("#submit_comment").click(function(){
-        
-        content = $("#content_comment").val();
-        musicId = $("#music_comment").val();
-        userId = $("#user_comment").val();
-        
-        if (userId == '') {
-            $("#content_comment").val('');
-            document.getElementById("noti").innerHTML = "Please login";
-        } else {
-            $.ajax({
-                url: 'comment',
-                type: 'POST',
-                data: "content=" + content + "&userId=" + userId + "&musicId=" + musicId,
-                success: function(res){
-                    $template =
-                    `
-                    <article id="comment-id-1" class="comment-item">
-                        <a class="pull-left thumb-sm"> 
-                            <img src="` + res.image + `" class="img-circle"> 
-                        </a> 
-                        <section class="comment-body m-b">
-                            <header> 
-                                <a href="#"><strong>` + res.name + `</strong></a> 
-                                <span class="text-muted text-xs block m-t-xs">just now</span> 
-                            </header>
-                            <div class="m-t-sm">` + res.content + `</div>
-                        </section>
-                    </article>
-                    `
-                    $("#line-comment").prepend($template);
-                    $("#content_comment").val('');
-                }
-                
-            })
-        }
-         
-        return false;
     });
 });

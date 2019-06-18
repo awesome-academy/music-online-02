@@ -28,10 +28,9 @@
                         <i class="fa fa-search"></i>
                     </button> 
                 </span> 
-                <input type="text" id="search" autocomplete="off" class="form-control input-sm no-border rounded" placeholder="{{ __('label.home_search') }}">
+                <input type="text" id="search" class="form-control input-sm no-border rounded" placeholder="{{ __('label.home_search') }}">
             </div>
         </div>
-        {{ csrf_field() }} 
     </form>
     <div class="navbar-right ">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user">
@@ -39,14 +38,14 @@
             @if(Session::has('name'))       
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"> 
                     <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm"> 
-                        <img src="image/{{ Session::get('avatar') }}"> 
+                        <img src="{{ Session::get('avatar') }}"> 
                     </span>
                     {{ Session::get('name') }}
                     <b class="caret"></b> 
                 </a> 
                 <ul class="dropdown-menu animated fadeInRight">
                     @if(Session::get('role_id') == config('home.role_admin'))  
-                    <li> <span class="arrow top"></span> <a href="#">{{ trans('label.manager') }}</a> </li>
+                    <li> <span class="arrow top"></span> <a href="/admin">{{ trans('label.manager') }}</a> </li>
                     @endif
                     <li> <a href="{{ route('profile.view', [Session::get('user_id')]) }}">{{ trans('label.profile') }}</a> </li>
                     <li class="divider"></li>

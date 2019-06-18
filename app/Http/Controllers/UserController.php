@@ -18,13 +18,14 @@ class UserController extends Controller
             $fileName = $file->getClientOriginalName('image');
             $path = 'image';
             $file->move($path, $fileName);
-            $user = User::where('id', $id)->update(['image' => $fileName]);
+            $realFileName = 'image/' . $fileName;
+            User::where('id', $id)->update(['image' => $realFileName]);
             $ava = User::find($id);
             session()->put('avatar', $ava->image);
         } else { 
             $name = $users->name = $request->name;
             $email = $users->email = $request->email;
-            $users = User::where('id', $id)->update(['name' => $name, 'email' => $email]);
+            User::where('id', $id)->update(['name' => $name, 'email' => $email]);
         }
         
     	return redirect()->route('profile.view', [$id]);
