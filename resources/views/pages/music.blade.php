@@ -82,11 +82,11 @@
                                           @endphp
                                           <div class="col-md-10 m-t-sm" id="label-content-{{ $item->id }}">{{ $item->content }}</div>
                                           @if ($id_user_login == config('home.role_admin') && $id_user_login == $id_user_comment)
-                                             <div class="col-md-1"><a class="edit_comment" data-id ="{{ $item->id }}" data-content ="{{ $item->content }}" href="javascript:;">{{ __('label.edit') }}</a></div>
+                                             <div class="col-md-1 edit_comment" id="content-{{ $item->id }}" data-id="{{ $item->id }}" data-content ="{{ $item->content }}"><a href="javascript:;">{{ __('label.edit') }}</a></div>
                                              <div class="col-md-1"><a class="delete_comment" data-id="{{ $item->id }}" href="javascript:;">Delete</a></div>
 
                                           @elseif ($id_user_login != config('home.role_admin') && $id_user_login == $id_user_comment)
-                                             <div class="col-md-1"><a class="edit_comment" data-id="{{ $item->id }}" data-content ="{{ $item->content }}" href="javascript:;">{{ __('label.edit') }}</a></div>
+                                             <div class="col-md-1 edit_comment" id="content-{{ $item->id }}" data-id="{{ $item->id }}" data-content ="{{ $item->content }}"><a href="javascript:;">{{ __('label.edit') }}</a></div>
                                              <div class="col-md-1"><a class="delete_comment" data-id="{{ $item->id }}" href="javascript:;">{{ __('label.delete') }}</a></div>
 
                                           @elseif ($id_user_login == config('home.role_admin') && $id_user_login != $id_user_comment)
@@ -100,8 +100,8 @@
                                                 <textarea class="form-control" name="" id="textarea-edit-{{ $item->id }}" rows="2"></textarea>
                                              </div>
                                              <div class="row">
-                                                <button type="submit" class="btn btn-success"><a class="submit-edit" id="btn-edit-{{ $item->id }}">{{ __('label.edit') }}</a></button>
-                                                <button type="submit" class="btn btn-success"><a class="cancel-edit" href="javascript:;">{{ __('label.cancel') }}</a></button>
+                                                <button type="button" class="btn btn-success"><a class="submit-edit" id="btn-edit-{{ $item->id }}">{{ __('label.edit') }}</a></button>
+                                                <button type="button" class="btn btn-success"><a class="cancel-edit" href="javascript:;">{{ __('label.cancel') }}</a></button>
                                              </div>
                                           </form>
                                        </div>

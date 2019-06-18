@@ -66,10 +66,10 @@
 				<td>
 					<div class="form-group col-8">
 					    <label for="">{{ trans('label.slug') }}</label>
-					    <input type="text" name="slug" class="form-control" placeholder="Ex:my-tam" required="required">
+					    <input type="hidden" name="slug" class="form-control" placeholder="Ex:my-tam" required="required">
 					</div>
 				</td>
-			</tr>
+			</tr> 
 			<tr>
 				<td>
 					<div class="form-group col-8">

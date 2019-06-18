@@ -82,7 +82,15 @@ class RegisterController extends Controller
         $user->role_id = config('home.register.role_id');
         $user->image = config('home.register.image');
         $user->save();
-        Auth::login($user);
+
+        $request->session()->put('username', $request->name);
+            $user = User::where('name', $request->name)->get();
+            session()->put('avatar', $user[0]->image);
+            session()->put('user_id', $user[0]->id);
+            session()->put('name', $request->name);
+            session()->put('role_id', $user[0]->role_id);
+            session()->put('info_user', $user);
+        //Auth::login($user);
         
         return redirect('/');
     }

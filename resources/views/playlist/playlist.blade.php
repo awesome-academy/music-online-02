@@ -15,36 +15,12 @@
                                     <div class="m-t-n-xxs item pos-rlt">
                                         <div class="bottom gd bg-info wrapper-lg"> 
                                             <span class="pull-right text-sm"></span> 
-                                            <span class="h2 font-thin">{{ $album->name }}</span> 
+                                            <span class="h2 font-thin">{{ $playlist->name }}</span> 
                                         </div>
                                         <div>
-                                            <img class="img-full" src="{{ $album->image }}">
+                                            <img class="img-full" src="{{ $playlist->image }}">
                                         </div>
                                     </div>
-                                    <ul class="list-group list-group-lg no-radius no-border no-bg m-t-n-xxs m-b-none auto">
-                                        
-                                        @foreach ($musics as $item)
-                                        <li class="list-group-item">
-                                            <div class="pull-right m-l"> 
-                                                <a href="#" class="m-r-sm">
-                                                    <i class="icon-cloud-download"></i>
-                                                </a>
-                                                <a href="javascript:;" class="plus-album">
-                                                    <i class="fa fa-plus" data-toggle="modal" data-target="#myModal"></i>
-                                                </a> 
-                                            </div>
-                                            <div class="play-music">
-                                                <a href="javascript:;" class="jp-play-me m-r-sm pull-left" onclick="play({{ $item->id }})"> 
-                                                    <i class="icon-control-play text"></i> 
-                                                    <i class="icon-control-pause text-active"></i> 
-                                                </a> 
-                                            </div>
-                                            <div class="clear text-ellipsis"> 
-                                                <span>{{ $item->name }}</span> 
-                                            </div>
-                                        </li>   
-                                        @endforeach
-                                    </ul>
                                 </section>
                             </section>
                         </aside>
@@ -53,16 +29,16 @@
                             <section class="vbox">
                                 <section class="scrollable hover">
                                     <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
-                                        @foreach ($albums as $item)
+                                        @foreach ($music as $item)
                                         <li class="play-album list-group-item clearfix" data-id={{ $item->id }}> 
                                             <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md"> 
                                                 <i class="icon-control-play text"></i> 
-                                                <i class="icon-control-pause text-active"></i> 
+                                                {{-- <i class="icon-control-pause text-active"></i>  --}}
                                             </a> 
-                                            <a href="{{ config('home.image.image_album').$item->id }}" class="pull-left thumb-sm m-r"> 
+                                            <a href="music/{{ $item->id }}" class="pull-left thumb-sm m-r"> 
                                                 <img src="{{ $item->image }}"> 
                                             </a> 
-                                            <a class="clear" href="album/{{ $item->id }}"> 
+                                            <a class="clear" href="playlist/{{ $item->id }}"> 
                                                 <span class="block text-ellipsis">{{ $item->name }}</span> 
                                                 @php
                                                     $artist = $item->artists()->first();

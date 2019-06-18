@@ -28,6 +28,8 @@ class HomeRegisterRequest extends FormRequest
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             're_password' => 'required|same:password',
+            're_password.required' => 'Please enter re-password',
+            're_password.same' => 'Incorrect re-password',
         ];
     }
 

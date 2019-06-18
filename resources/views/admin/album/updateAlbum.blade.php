@@ -1,8 +1,8 @@
 @extends('admin.master')
 @section('content')
-    <form action="{{ route('albums.update_process', [$albums->id]) }}" method="post">
+    <form action="{{ route('albums.update_process', [$albums->id]) }}" method="post" enctype="multipart/form-data">
     <legend>{{ trans('label.update') }}</legend>
-        <input type="hidden" name="_token" value="{{ csrf_token() }} " enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="{{ csrf_token() }} " >
         <table class="table"> 
             <tr>
                 <td>

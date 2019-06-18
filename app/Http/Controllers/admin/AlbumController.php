@@ -62,10 +62,10 @@ class AlbumController extends Controller
         if ($request->hasFile('image')) { 
             $file = $request->image;
             $fileName = $file->getClientOriginalName('image');
-            $path = 'image';
+            $path = 'images';
             $file->move($path, $fileName);
         } 
-        $data['image'] = $fileName;
+        $data['image'] = 'images/' . $fileName;
         $album = Album::create($data);
 
         $artists = new Artist();
@@ -95,7 +95,7 @@ class AlbumController extends Controller
             if ($request->hasFile('image')) {
                 $file = $request->image;
                 $fileName = $file->getClientOriginalName('image');
-                $path = 'image';
+                $path = 'images';
                 $file->move($path, $fileName);
             } 
         } 
@@ -103,7 +103,7 @@ class AlbumController extends Controller
         $album = Album::where('id', $id)->update([
             'name' => $name, 
             'slug' => $slug, 
-            'image' => $fileName, 
+            'image' => 'images/' . $fileName, 
             'updated_at' => $updated
         ]);
 

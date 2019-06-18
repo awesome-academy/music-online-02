@@ -4,7 +4,7 @@ return [
 
     'number' => [
         'begin_music' => '0',
-        'end_music' => '11',
+        'end_music' => '12',
         'begin_album' => '0',
         'end_album' => '8',
         'end_song' => '15',

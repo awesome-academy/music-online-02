@@ -7,7 +7,6 @@
 			<th>{{ trans('label.name') }}</th>
 			<th>{{ trans('label.lyric') }}</th>
 			<th>{{ trans('label.view') }}</th>
-			<th>{{ trans('label.path') }}</th>
 			<th>{{ trans('label.author') }}</th>
 			<th>{{ trans('label.ratting') }}</th>
 			<th>{{ trans('label.slug') }}</th>
@@ -20,7 +19,6 @@
 				<td>{{ $item->name }}</td>
 				<td>{{ $item->lyric }}</td>
 				<td>{{ $item->view }}</td>
-				<td>{{ $item->path }}</td>
 				<td>{{ $item->author }}</td>
 				<td>{{ $item->rating }}</td>
 				<td>{{ $item->slug }}</td>

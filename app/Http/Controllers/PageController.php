@@ -8,6 +8,8 @@ use App\User;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\HomeRegisterRequest;
+use App\Playlist;
+use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
 {
@@ -45,6 +47,14 @@ class PageController extends Controller
         return response()->json($music);
     }
 
+    public function getJsonPlaylist($id)
+    {
+        $playlist = Playlist::with('artists')->findOrFail($id);
+        $music = $playlist->musics()->get();
+
+        return response()->json($playlist);
+    }
+
     public function getCategory($id)
     {
         $category = Category::findOrFail($id);
@@ -63,8 +73,20 @@ class PageController extends Controller
     }
 
     public function profile($id){
-        $users = User::findOrFail($id);
+        $users = User::findOrFail($id);    
+        $playlist = Playlist::where('user_id', '=', $id)->get();
 
-        return view('pages.profile', compact('users'));
+        return view('pages.profile', compact('users', 'playlist'));
     }
+
+    public function playlist($id){
+        $playlist = Playlist::findOrFail($id);
+        if (!$playlist) {
+            return redirect('/');
+        } else {
+            $music = $playlist->musics()->get();
+
+            return view('playlist.playlist', compact('music', 'playlist'));
+        }
+    } 
 }

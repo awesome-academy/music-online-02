@@ -25,7 +25,7 @@ return [
     'comment' => 'Comments',
     'activity' => 'Activity',
     'follower' => 'Follower',
-    'event' => 'Event',
+    'playlist' => 'Playlist',
     'interaction' => 'Interaction',
     'follow' => 'Follow',
     'following' => 'Following',
@@ -64,5 +64,7 @@ return [
     'edit' => 'Edit',
     'cancel' => 'Cancel',
     'delete' => 'Delete',
+    'view' => 'View',
+    'close' => 'Close',
 
 ];

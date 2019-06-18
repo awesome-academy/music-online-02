@@ -1,6 +1,6 @@
 //////// xem truoc anh
-function  readURL(input,thumbimage) {
-    var  reader = new FileReader();
+function readURL(input, thumbimage) {
+    var reader = new FileReader();
     reader.onload = function (e) 
     {
         $("#thumbimage").attr('src', e.target.result);

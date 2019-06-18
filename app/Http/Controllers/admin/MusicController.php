@@ -35,15 +35,16 @@ class MusicController extends Controller
     {
     	try {
           	DB::beginTransaction();
-          	$music = new Music();
-            $data = $request->all();
+			$music = new Music();
+			$data = $request->all();
+			$data['slug'] = changeTitle($request->name);
     		if ($request->hasFile('image')) {
     			$file = $request->image;
     			$fileName = $file->getClientOriginalName('image');
-    			$path = 'image';
+    			$path = 'images';
     			$file->move($path, $fileName);
     		} 
-            $data['image'] = $fileName;
+            $data['image'] = 'images/' . $fileName;
             $music = Music::create($data);
 
             $artist = new Artist();
@@ -74,18 +75,18 @@ class MusicController extends Controller
     public function updateProcessMusic(Request $request, $id)
     {
     	$music = new Music();
-    	$name = $music->name = $request->nameMusic;
+    	$name = $music->name = $request->name;
     	$lyric = $music->lyric = $request->lyric;
     	$path = $music->path = $request->path;
     	$author = $music->author = $request->author;
-    	$slug = $music->slug = $request->slug;
+    	$slug = $music->slug = changeTitle($request->name);
     	if ($request->image == '') {
-    		$image = $music->image = $request->dataImage;
+    		$fileName = $music->image = $request->dataImage;
     	} else {
     		if($request->hasFile('image')){
                 $file = $request->image;
                 $fileName = $file->getClientOriginalName('image');
-                $path = 'image';
+                $path = 'images';
                 $file->move($path, $fileName);
             } 
     	} 
@@ -95,7 +96,7 @@ class MusicController extends Controller
         	'path' => $path, 
         	'author' => $author, 
         	'slug' => $slug, 
-        	'image' => $fileName, 
+        	'image' => 'images/' . $fileName, 
     	]);
 
     	return redirect()->route('musics');

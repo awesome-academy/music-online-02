@@ -24,7 +24,7 @@
 				<td>
 					<div class="form-group col-8">
 					    <label for="">{{ trans('label.description') }}</label>
-					    <input type="text" name="description" class="form-control" value="{{ $artists->description }}">
+					    <textarea type="text" name="description" class="form-control" value="">{{ $artists->description }}</textarea>
 					</div>
 				</td>
 			</tr>
