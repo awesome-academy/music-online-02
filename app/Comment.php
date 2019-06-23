@@ -15,6 +15,6 @@ class Comment extends Model
 
     public function music()
     {
-        return $this->belongsTo('App\Musics', 'music_id', 'id');
+        return $this->belongsTo('App\Music', 'music_id', 'id');
     }
 }

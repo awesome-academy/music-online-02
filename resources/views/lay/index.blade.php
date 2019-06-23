@@ -31,6 +31,7 @@
       <script type="text/javascript" src="custom-js/search.js"></script>
       <script type="text/javascript" src="custom-js/comment.js"></script>
       <script type="text/javascript" src="custom-js/review_image.js"></script>
+      <script type="text/javascript" src="custom-js/favorite.js"></script>
       <script src="{{ config('home.link.typehead') }}"></script>
       <script src="bower_components/hoang-md-client/client/js/sweetalert2/dist/sweetalert2.all.min.js"></script>
    </body>

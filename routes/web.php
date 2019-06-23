@@ -10,7 +10,7 @@ use App\Http\Controllers\CommentController;
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+| 
 */
 
 Route::group(['middleware' => ['checkuser', 'locale']], function(){
@@ -201,7 +201,7 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('category/{id}', 'PageController@getCategory');
     //search
     Route::get('/search', 'SearchController@searchFullText')->name('search');
-    //comment
+    
     Route::get('/logout', 'PageController@logout');
     //playlist
     Route::group(['prefix' => 'playlist'], function()
@@ -211,11 +211,18 @@ Route::group(['middleware' => 'locale'], function() {
         Route::post('/add', 'PlaylistController@add');
     });
     Auth::routes();
+    //comment
     Route::group(['prefix' => 'comment'], function()
     {
         Route::post('/add', 'CommentController@comment');
         Route::get('/delete/{id}', 'CommentController@delete');
         Route::post('/edit', 'CommentController@edit');
+    });
+    //like
+    Route::group(['prefix' => 'favorite'], function()
+    {
+        Route::post('/like', 'FavoriteController@like');
+        Route::post('/unlike', 'FavoriteController@unlike');
     });
 });
 Route::get('/changeLang{lang}', 'HomeController@changeLang')->name('lang.change');

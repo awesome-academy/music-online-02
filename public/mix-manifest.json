@@ -6,5 +6,6 @@
     "/custom-js/changeRole.js": "/custom-js/changeRole.js",
     "/custom-js/search.js": "/custom-js/search.js",
     "/custom-js/comment.js": "/custom-js/comment.js",
-    "/custom-js/review_image.js": "/custom-js/review_image.js"
+    "/custom-js/review_image.js": "/custom-js/review_image.js",
+    "/custom-js/favorite.js": "/custom-js/favorite.js"
 }

@@ -5,7 +5,7 @@
     <section class="hbox stretch">
         <!-- .aside --> 
         @include('lay.menu')
-        <!-- /.aside --> 
+        <!-- /.aside  --> 
         <section id="content">
             <section class="hbox stretch">
                 <section>
@@ -21,13 +21,25 @@
                                 <span class="bar4 a4 bg-warning dk"></span> 
                                 <span class="bar5 a5 bg-danger dker"></span>                        
                             </h2>
+                            @php
+                                $user_ID = '';    
+                                if (session('info_user') != null){
+                                    $user_ID = session('info_user')[0]->id;
+                                } else {
+                                    $user_ID = ''; 
+                                }
+                            @endphp
+                            <input type="hidden" value="{{ $user_ID }}" id="user_ID">
                             <div class="row row-sm">
-                                @foreach($musics as $items)
+                                @foreach($music_like as $items)
+                                @php
+                                    $id_music = $items[0]->id;
+                                @endphp
                                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                                     <div class="item">
                                         <div class="pos-rlt">
                                             <div class="top"> 
-                                                <span class="pull-right m-t-sm m-r-sm badge bg-info">{{ $items->view }}</span> 
+                                                <span class="pull-right m-t-sm m-r-sm badge bg-info">{{ $items[0]->view }}</span> 
                                             </div>
                                             <div class="item-overlay opacity r r-2x bg-black">
                                                 <div class="text-info padder m-t-sm text-sm"> 
@@ -37,32 +49,39 @@
                                                     <i class="fa fa-star"></i> 
                                                     <i class="fa fa-star-o text-muted"></i> 
                                                 </div>
-                                                <div data-id ="{{ $items->id }}" class="center text-center m-t-n play-music"> 
+                                                <div data-id ="{{ $id_music }}" class="center text-center m-t-n play-music"> 
                                                     <a href="javascript:;">
                                                         <i class="icon-control-play i-2x"></i>
                                                     </a> 
                                                 </div>
-                                                <div class="bottom padder m-b-sm"> 
-                                                    <a href="#" class="pull-right"> 
-                                                        <i class="fa fa-heart-o"></i> 
-                                                    </a> 
-                                                    <div data-id ="{{ $items->id }}" class="plus">
+                                                <div class="bottom padder m-b-sm">
+                                                    <div data-id ="{{ $id_music }}" class="music-favorite">
+                                                        <a href="javascript:;" class="pull-right" id="like-{{ $id_music }}">
+                                                            @if ($items[1] == false)
+                                                            <i class="fa fa-heart-o text favorite" id="favorite-{{ $id_music }}"></i>
+                                                            @elseif ($items[1] == true)
+                                                            <i class="fa fa-heart text-danger unfavorite" id="unfavorite-{{ $id_music }}"></i>
+                                                            @endif
+                                                        </a>
+                                                    </div>
+                                                    <div data-id ="{{ $id_music }}" class="plus">
                                                         <a href="javascript:;"> 
                                                             <i class="fa fa-plus-circle" data-toggle="modal" data-target="#myModal"></i> 
                                                         </a> 
                                                     </div>
                                                 </div>                                     
                                             </div>
-                                            <a href="music/{{ $items->id }}">
-                                                <img src="{{ $items->image }}" alt="" class="r r-2x img-full">
+                                            <a href="music/{{ $id_music }}">
+                                                <img src="{{ $items[0]->image }}" alt="" class="r r-2x img-full">
                                             </a> 
                                         </div>
                                         <div class="padder-v"> 
-                                            <div data-id ="{{  $items->id }}" class="name-music">
-                                                <a href="music/{{ $items->id }}" class="text-ellipsis">{{ $items->name }}</a>
+                                            <div data-id ="{{ $id_music }}" class="name-music">
+                                                <a href="music/{{ $id_music }}" class="text-ellipsis">{{ $items[0]->name }}</a>
                                             </div>    
                                             @php
-                                                $artist = $items->artists()->first();
+                                                $artist = $items[0]->artists()->first();
+                                                
                                             @endphp     
                                             <a href="artist/{{ $artist->id }}" class="text-ellipsis text-xs text-muted">
                                                 {{ $artist->name }}
