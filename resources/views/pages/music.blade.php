@@ -8,7 +8,7 @@
          <section class="vbox">
             <section class="w-f-md">
                <section class="hbox stretch bg-black dker">
-                  <!-- side content --> 
+                  <!-- side content  --> 
                   <aside class="col-sm-5 no-padder" id="sidebar">
                      <section class="vbox animated fadeInUp">
                         <section class="scrollable">

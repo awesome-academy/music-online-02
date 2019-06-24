@@ -5,7 +5,7 @@
     <section class="hbox stretch">
         <!-- .aside --> 
         @include('lay.menu')
-        <!-- /.aside --> 
+        <!-- /.aside  --> 
         <section id="content">
             <section class="hbox stretch">
                 <section>

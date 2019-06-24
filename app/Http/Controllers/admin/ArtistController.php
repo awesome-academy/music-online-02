@@ -51,7 +51,7 @@ class ArtistController extends Controller
         $description = $artists->description = $request->description;
         $slug = $artists->slug = $request->slug;
         if ($request->image == '') {
-            $image = $artists->image = $request->dataImage;
+            $image = $artists->image = $request->dataImage; // lay anh cu
         } else {
             $image = $artists->image = $request->image;
         } 
