@@ -65,7 +65,7 @@ class AlbumController extends Controller
             $path = 'image';
             $file->move($path, $fileName);
         } 
-        $data['image'] = $fileName;
+        $data['image'] = 'images/' . $fileName;
         $album = Album::create($data);
 
         $artists = new Artist();
@@ -103,7 +103,7 @@ class AlbumController extends Controller
         $album = Album::where('id', $id)->update([
             'name' => $name, 
             'slug' => $slug, 
-            'image' => $fileName, 
+            'image' => 'images/' . $fileName, 
             'updated_at' => $updated
         ]);
 

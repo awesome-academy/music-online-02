@@ -33,14 +33,14 @@
                                                                             <img height="300" width="300" alt="Thumb image" id="thumbimage" style="display: none" />
                                                                             <a class="removeimg" href="javascript:" ></a>
                                                                             </div>
-                                                                        <div id="myfileupload">
+                                                                            <div id="myfileupload">
                                                                             <form action="{{ route('profile.update', [$users->id]) }}" method="post" enctype="multipart/form-data">
                                                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                                                 <input type="file" id="uploadfile" name="image" onchange="readURL(this);" class="custom-file-input" required="required" />
                                                                                 <!--      Name  mà server request về sẽ là ImageUpload-->
                                                                                 <button type="submit" class="btn btn-info">
                                                                                     {{ trans('label.update') }}
-                                                                                </button>
+                                                                                    </button>
                                                                             </form>
                                                                         </div>
                                                                     </div>
@@ -53,11 +53,29 @@
                                             </div>
                                             <div class="panel wrapper">
                                                 <div class="row text-center">
-                                                    <div class="col-xs-6"> <a href="#"> <span class="m-b-xs h4 block">{{ config('home.number.end_music') }}</span> <small class="text-muted">{{ trans('label.follower') }}</small> </a> </div>
-                                                    <div class="col-xs-6"> <a href="#"> <span class="m-b-xs h4 block">{{ config('home.number.end_music') }}</span> <small class="text-muted">{{ trans('label.following') }}</small> </a> </div>
+                                                    <div class="col-xs-6"> 
+                                                        <a href="#"> 
+                                                            <span class="m-b-xs h4 block">
+                                                                {{ config('home.number.end_music') }}
+                                                            </span> 
+                                                            <small class="text-muted">
+                                                                {{ trans('label.follower') }}
+                                                            </small> 
+                                                        </a> 
+                                                    </div>
+                                                    <div class="col-xs-6"> 
+                                                        <a href="#"> 
+                                                            <span class="m-b-xs h4 block">
+                                                                {{ config('home.number.end_music') }}
+                                                            </span> 
+                                                            <small class="text-muted">
+                                                                {{ trans('label.following') }}
+                                                            </small> 
+                                                        </a> 
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="btn-group btn-group-justified m-b"> <a class="btn btn-success btn-rounded" data-toggle="button"> <span class="text"> <i class="fa fa-eye"></i> {{ trans('label.follow') }} </span> <span class="text-active"> <i class="fa fa-eye"></i> {{ trans('label.following') }} </span> </a> <a class="btn btn-dark btn-rounded"> <i class="fa fa-comment-o"></i> {{ trans('label.chat') }} </a> </div>
+                                                <div class="btn-group btn-group-justified m-b"> <a class="btn btn-success btn-rounded" data-toggle="button"> <span class="text"> <i class="fa fa-eye"></i> {{ trans('label.follow') }} </span> <span class="text-active"> <i class="fa fa-eye"></i> {{ trans('label.following') }} </span> </a> <a class="btn btn-dark btn-rounded"> <i class="fa fa-comment-o"></i> {{ trans('label.chat') }} </a> </div>
                                             <div>
                                                 <p class="m-t-sm"> <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a> <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a> <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a> </p>
                                             </div>
@@ -70,7 +88,7 @@
                                     <header class="header bg-light lt">
                                         <ul class="nav nav-tabs nav-white">
                                             <li class="active"><a href="#activity" data-toggle="tab">{{ trans('label.activity') }}</a></li>
-                                            <li class=""><a href="#events" data-toggle="tab">{{ trans('label.event') }}</a></li>
+                                            <li class=""><a href="#playlist" data-toggle="tab">{{ trans('label.playlist') }}</a></li>
                                             <li class=""><a href="#favorite" data-toggle="tab">{{ trans('label.favorite') }}</a></li>
                                         </ul>
                                     </header>
@@ -120,8 +138,35 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        <div class="tab-pane" id="events">
+                                        <div class="tab-pane" id="playlist">
                                             <div class="text-center wrapper"> 
+                                                <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
+                                                    @foreach ($playlists as $playlist)
+                                                         <li class="list-group-item clearfix">
+                                                            <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md"> 
+                                                                <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px"> 
+                                                                    <span class="bar1 a1 bg-primary lter"></span>
+                                                                    <span class="bar2 a2 bg-info lt"></span> 
+                                                                    <span class="bar3 a3 bg-success"></span> 
+                                                                    <span class="bar4 a4 bg-warning dk"></span> 
+                                                                    <span class="bar5 a5 bg-danger dker"></span> 
+                                                                </span>
+                                                             </a> 
+                                                            <a href="{{ route('playlist', [$playlist->id]) }}" class="pull-left thumb-sm m-r"> 
+                                                                <img class="img-lq" src="{{ $playlist->image }}"> 
+                                                            </a> 
+                                                            <a class="clear"> 
+                                                                <span class="block text-ellipsis">
+                                                                    <a href="{{ route('playlist', [$playlist->id]) }}">{{ $playlist->name }}</a>
+                                                                </span> 
+                                                                <small class="block">
+                                                                    <a href="{{ route('playlist', [$playlist->id]) }}">{{ $playlist->created_at }}</a>
+                                                                </small>
+                                                                <br>
+                                                            </a>
+                                                        </li>
+                                                    @endforeach 
+                                                </ul>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="favorite">

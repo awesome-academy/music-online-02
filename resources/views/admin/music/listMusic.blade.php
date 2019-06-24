@@ -7,9 +7,9 @@
 			<th>{{ trans('label.name') }}</th>
 			<th>{{ trans('label.lyric') }}</th>
 			<th>{{ trans('label.view') }}</th>
-			<th>{{ trans('label.path') }}</th>
+			<th>{{ trans('label.image') }}</th>
 			<th>{{ trans('label.author') }}</th>
-			<th>{{ trans('label.ratting') }}</th>
+			<th>{{ trans('label.rating') }}</th>
 			<th>{{ trans('label.slug') }}</th>
 			<th>{{ trans('label.action') }}</th>
 		</thead>
@@ -20,7 +20,7 @@
 				<td>{{ $item->name }}</td>
 				<td>{{ $item->lyric }}</td>
 				<td>{{ $item->view }}</td>
-				<td>{{ $item->path }}</td>
+				<td><img src="{{ $item->image }}" class="img-thumbnail"></td>
 				<td>{{ $item->author }}</td>
 				<td>{{ $item->rating }}</td>
 				<td>{{ $item->slug }}</td>

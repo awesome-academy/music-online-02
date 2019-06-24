@@ -43,7 +43,7 @@ class MusicController extends Controller
     			$path = 'image';
     			$file->move($path, $fileName);
     		} 
-            $data['image'] = $fileName;
+            $data['image'] = 'images/' . $fileName;
             $music = Music::create($data);
 
             $artist = new Artist();
@@ -95,7 +95,7 @@ class MusicController extends Controller
         	'path' => $path, 
         	'author' => $author, 
         	'slug' => $slug, 
-        	'image' => $fileName, 
+        	'image' => 'images/' . $fileName, 
     	]);
 
     	return redirect()->route('musics');

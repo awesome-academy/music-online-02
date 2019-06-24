@@ -28,7 +28,7 @@ class ArtistController extends Controller
         $artists->name = $request->nameArtist;
         $artists->description = $request->description;
         $artists->slug = $request->slug;
-        $artists->image = $request->image;
+        $artists->image = 'images/' . $request->image;
         $artists->save();
 
         return redirect()->route('artists');
@@ -59,7 +59,7 @@ class ArtistController extends Controller
             'name' => $name, 
             'description' => $description, 
             'slug' => $slug, 
-            'image' => $image
+            'image' => 'images/' . $image
         ]);
         
         return redirect()->route('artists');

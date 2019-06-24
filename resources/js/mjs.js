@@ -44,6 +44,7 @@ $(document).ready(function() {
     var url = window.location.pathname;
     var res = url.split("/");
     var albumId = res[2];
+    var playlistId = res[2];
     
     $.ajax({
         type: 'GET',
@@ -67,6 +68,36 @@ $(document).ready(function() {
                 audioFullScreen: false,
             });
             res.forEach(element => {
+                myPlaylist.add({
+                    title: element.name,
+                    mp3: element.path,
+                }) 
+            });
+        }
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '/playlists/' + playlistId,
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function (response) {
+            var myPlaylist = new jPlayerPlaylist({
+                jPlayer: "#jplayer_N",
+                cssSelectorAncestor: "#jp_container_N",
+            }, {
+                playlistOptions: {
+                    enableRemoveControls: true,
+                    autoPlay: true,
+                },
+                swfPath: "js/jPlayer",
+                supplied: "webmv, ogv, m4v, oga, mp3",
+                smoothPlayBar: true,
+                keyEnabled: true,
+                audioFullScreen: false,
+            });
+            response.forEach(element => {
                 myPlaylist.add({
                     title: element.name,
                     mp3: element.path,
