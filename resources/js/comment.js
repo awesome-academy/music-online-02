@@ -33,7 +33,7 @@ $(document).ready(function(){
                             </header>
                             <div class="row">
                                 <div class="col-md-10 m-t-sm" id="label-content-` + res.commentId + `">` + res.content + `</div>
-                                <div class="col-md-1"><a class="edit_comment" data-id ="` + res.commentId + `" data-content ="` + res.content + `" href="javascript:;">Edit</a></div>
+                                <div class="col-md-1 edit_comment" data-id ="` + res.commentId + `" data-content ="` + res.content + `"><a href="javascript:;">Edit</a></div>
                                 <div class="col-md-1"><a class="delete_comment" data-id="` + res.commentId + `" href="javascript:;">Delete</a></div>
                             </div>
                             <div>
@@ -42,8 +42,8 @@ $(document).ready(function(){
                                         <textarea class="form-control" name="" id="textarea-edit-` + res.commentId + `" rows="2"></textarea>
                                     </div>
                                     <div class="row">
-                                        <button type="submit" class="btn btn-success"><a class="submit-edit" id="btn-edit-` + res.commentId + `" href="javascript:;">Edit</a></button>
-                                        <button type="submit" class="btn btn-success"><a class="cancel-edit" href="javascript:;">Cancel</a></button>
+                                        <button type="button" class="btn btn-success"><a class="submit-edit" id="btn-edit-` + res.commentId + `" href="javascript:;">Edit</a></button>
+                                        <button type="button" class="btn btn-success"><a class="cancel-edit" href="javascript:;">Cancel</a></button>
                                     </div>
                                 </form>
                             </div>
@@ -114,8 +114,7 @@ function deleteComment(commentID){
 }
 
 //edit comment
-$('body').on('click', '.edit_comment', function(e) { 
-    e.preventDefault;
+$('body').on('click', '.edit_comment', function(e) {
     let commentID = $(this).data("id");
     let commentContent = $(this).data("content");
     let idEdit = 'edit-comment-id-' + commentID;
@@ -125,19 +124,18 @@ $('body').on('click', '.edit_comment', function(e) {
     let idBtnEdit = '#btn-edit-' + commentID;
 
     $('body').on('click', idBtnEdit, function(e) {
-        e.preventDefault;
         editContent = $('#' + textareaEdit).val();
         let labelContent = 'label-content-' + commentID;
+        let contentID = 'content-' + commentID;
         
         $.ajax({
             type: 'POST',
             url: '/comment/edit',
             data: "editContent=" + editContent + "&commentID=" + commentID,
             success: function(res) {   
-                
-                $('#' + textareaEdit).val(res.newContent);
+                // $('#' + textareaEdit).val(res.newContent);
                 $('#' + labelContent).html(res.newContent);
-                //$('#' + labelContent).val(res.newContent);
+                $('#' + contentID).attr('data-content', res.newContent);
                 $('#' + idEdit).css({"display": "none"});
             }
         });

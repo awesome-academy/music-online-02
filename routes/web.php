@@ -189,6 +189,7 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('/', 'PageController@index');
     Route::get('/musics/{id}', 'PageController@getJsonMusic');
     Route::get('/albums/{id}', 'PageController@getJsonAlbum');
+    Route::get('/playlists/{id}', 'PageController@getJsonPlaylist');
     Route::get('/profile/{id}', 'PageController@Profile')->name('profile.view');
     Route::post('/updateProfile/{id}', 'UserController@updateProfile')->name('profile.update');
     Route::get('artist/{id}', 'PageController@artist');
@@ -217,5 +218,6 @@ Route::group(['middleware' => 'locale'], function() {
         Route::get('/delete/{id}', 'CommentController@delete');
         Route::post('/edit', 'CommentController@edit');
     });
+    Route::get('/playlist/{id}', 'PageController@playlist');
 });
 Route::get('/changeLang{lang}', 'HomeController@changeLang')->name('lang.change');

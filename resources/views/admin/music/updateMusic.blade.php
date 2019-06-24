@@ -1,8 +1,8 @@
 @extends('admin.master')
 @section('content')
-	<form action="{{ route('musics.update_process', [$musics->id]) }}" method="post">
+	<form action="{{ route('musics.update_process', [$musics->id]) }}" method="post" enctype="multipart/form-data">
 	    <legend>{{ trans('label.music') }}</legend>
-	    <input type="hidden" name="_token" value="{{ csrf_token() }}" enctype="multipart/form-data">
+	    <input type="hidden" name="_token" value="{{ csrf_token() }}" >
 		<table class="table"> 
 			<tr>
 				<td>
@@ -16,7 +16,7 @@
 				<td>
 					<div class="form-group col-8">
 					   <label for="">{{ trans('label.name') }}</label>	
-					   <input type="text" name="nameMusic" class="form-control" value="{{ $musics->name }}">
+					   <input type="text" name="name" class="form-control" value="{{ $musics->name }}">
 					</div>
 				</td>
 			</tr>
@@ -44,14 +44,14 @@
 					</div>
 				</td>
 			</tr>
-			<tr>
+			{{-- <tr>
 				<td>
 					<div class="form-group col-8">
 					    <label for="">{{ trans('label.slug') }}</label>
 					    <input type="text" name="slug" class="form-control" value="{{ $musics->slug }}">
 					</div>
 				</td>
-			</tr>
+			</tr> --}}
 			<tr>
 				<td>
 					<div class="form-group col-8">

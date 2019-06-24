@@ -35,7 +35,7 @@
     <div class="navbar-right ">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user">
             <li class="dropdown">
-            @if(Session::has('name'))       
+            @if(Session::has('name'))
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown"> 
                     <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm"> 
                         <img src="{{ Session::get('avatar') }}"> 
