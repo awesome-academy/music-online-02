@@ -89,8 +89,8 @@ class AlbumController extends Controller
         $album = new Album();
         $name = $album->name = $request->name;
         $slug = $album->slug = $request->slug;
-        if ($request->image == '') {
-            $fileName = $album->image = $request->dataImage;
+        if ($request->image == null) {
+            $file = $album->image = $request->dataImage; //lay gia tri image cu
         } else {
             if ($request->hasFile('image')) {
                 $file = $request->image;

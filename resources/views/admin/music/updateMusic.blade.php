@@ -2,8 +2,8 @@
 @section('content')
 	<form action="{{ route('musics.update_process', [$musics->id]) }}" method="post">
 	    <legend>{{ trans('label.music') }}</legend>
-	    <input type="hidden" name="_token" value="{{ csrf_token() }}" enctype="multipart/form-data">
-		<table class="table"> 
+	    <input type="hidden" name="_token" value="{{ csrf_token() }}" >
+		<table class="table table"> 
 			<tr>
 				<td>
 					<div class="form-group col-8">

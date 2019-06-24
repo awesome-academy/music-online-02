@@ -1,12 +1,22 @@
 <?php
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+
 use App\Music;
+
 use App\Artist;
+
 use App\Album;
+
 use App\User;
+
 use App\Category;
+
+use App\Playlist;
+
 use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests\HomeRegisterRequest;
 
 class PageController extends Controller
