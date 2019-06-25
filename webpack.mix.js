@@ -21,4 +21,5 @@ mix.copy([
     'resources/js/search.js',
     'resources/js/comment.js',
     'resources/js/review_image.js',
+    'resources/js/favorite.js',
 ], 'public/custom-js');

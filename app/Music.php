@@ -54,6 +54,11 @@ class Music extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function favorites()
+    {
+        return $this->hasMany('App\Favorite');
+    }
+
     protected $searchable = [
         'name',
     ];
