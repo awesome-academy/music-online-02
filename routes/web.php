@@ -226,6 +226,8 @@ Route::group(['middleware' => 'locale'], function() {
         Route::post('/like', 'FavoriteController@like');
         Route::post('/unlike', 'FavoriteController@unlike');
     });
+    //count view
+    Route::get('/addview/{id}', 'PageController@addview');
 
 });
 Route::get('/changeLang{lang}', 'HomeController@changeLang')->name('lang.change');

@@ -119,4 +119,11 @@ class PageController extends Controller
 
         return view('pages.playlist', compact('playlist', 'song'));
     }
+
+    public function addview($id)
+    {
+        $musics = Music::findOrFail($id);
+        $musics->view = $musics->view + 1;
+        $musics->save();
+    }
 }

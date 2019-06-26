@@ -13,8 +13,8 @@
                      <section class="vbox animated fadeInUp">
                         <section class="scrollable">
                            <div class="m-t-n-xxs item pos-rlt">
-                              <div class="bottom gd bg-info wrapper-lg"> 
-                                 <span class="pull-right text-sm"></span> 
+                              <div class="bottom gd bg-info wrapper-lg">
+                                 <span class="pull-right text-sm">{{ __('label.views') }}&nbsp;{{ $musics->view }}</span> 
                                  <span class="h2 font-thin">{{ $musics->name }}</span> 
                               </div>
                               <div>

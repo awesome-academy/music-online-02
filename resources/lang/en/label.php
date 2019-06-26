@@ -68,5 +68,6 @@ return [
     'edit' => 'Edit',
     'cancel' => 'Cancel',
     'delete' => 'Delete',
+    'views' => 'Views:',
 
 ];

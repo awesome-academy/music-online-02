@@ -41,7 +41,7 @@
             "database/factories"
         ],
         "files": [
-        	"app/Slug/function.php"
+            "app/Slug/function.php"
         ]
     },
     "autoload-dev": {

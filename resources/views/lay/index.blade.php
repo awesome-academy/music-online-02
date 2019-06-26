@@ -32,6 +32,7 @@
       <script type="text/javascript" src="custom-js/comment.js"></script>
       <script type="text/javascript" src="custom-js/favorite.js"></script>
       <script src="{{ config('home.link.typehead') }}"></script>
+      <script type="text/javascript" src="{{ config('home.link.cookie') }}"></script>
       <script src="bower_components/hoang-md-client/client/js/sweetalert2/dist/sweetalert2.all.min.js"></script>
    </body>
    <!-- Mirrored from flatfull.com/themes/musik/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 May 2019 06:26:28 GMT -->
