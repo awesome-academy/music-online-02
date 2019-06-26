@@ -84,7 +84,7 @@
                                 @endforeach                     
                             </div>
                             <div class="row">
-                                <div class="col-md-7">
+                                <div class="col-md-7 bg-primary">
                                     <h3 class="font-thin">{{ trans('label.album') }}</h3>
                                     <div class="row row-sm">
                                         @foreach($albums as $items)

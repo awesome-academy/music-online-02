@@ -74,6 +74,14 @@ class PageController extends Controller
         return response()->json($music);
     }
 
+    public function getJsonPlaylist($id)
+    {
+        $playlist = Playlist::findOrFail($id);
+        $music = $playlist->musics()->get();
+
+        return response()->json($music);
+    }
+
     public function getCategory($id)
     {
         $category = Category::findOrFail($id);
@@ -100,7 +108,15 @@ class PageController extends Controller
             $music = Music::where('id', $musicID)->first();
             array_push($musics, $music);
         }
+        $playlists = Playlist::get();
 
-        return view('pages.profile', compact('users', 'musics'));
+        return view('pages.profile', compact('users', 'musics', 'playlists'));
+    }
+
+    public function playlist($id){
+        $playlist = Playlist::findOrFail($id);
+        $song = $playlist->musics()->orderBy('id','DESC');
+
+        return view('pages.playlist', compact('playlist', 'song'));
     }
 }

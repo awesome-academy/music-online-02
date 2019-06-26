@@ -16,7 +16,7 @@
                 <td>{{ $item->id }}</td>
                 <td><a href="{{ route('albums.music_view', [$item->id]) }}">{{ $item->name }}</a></td>
                 <td>{{ $item->slug }}</td>
-                <td>{{ $item->image }}</td>
+                <td><img src="{{ $item->image }}" class="img-thumbnail"></td>
                 <td>
                     <a href="{{ route('albums.update_view', [$item->id]) }}" class="btn btn-dark">{{ trans('label.update') }}</a>
                     <a href="{{ route('albums.delete', [$item->id]) }}" class="btn btn-danger">{{ trans('label.delete') }}</a>
