@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('content')
-    <form action="{{ route('albums.update_process', [$albums->id]) }}" method="post">
+    <form action="{{ route('albums.update_process', [$albums->id]) }}" method="post" enctype="multipart/form-data">
     <legend>{{ trans('label.update') }}</legend>
         <input type="hidden" name="_token" value="{{ csrf_token() }} " >
         <table class="table table"> 
@@ -32,12 +32,27 @@
                 <td>
                     <div class="form-group col-8">
                         <label for="">{{ trans('label.image') }}</label>
-                        <input type="hidden" value="{{ $albums->image }}" name="dataImage">
-                        <input type="file" name="image" class="form-control">
+                        <div>
+                            <div id="thumbbox">
+                                <img height="300" width="300" alt="Thumb image" id="thumbimage" style="" src="{{ $albums->image }}" />
+                                <a class="removeimg" href="javascript:" ></a>
+                            </div>
+                            <div id="myfileupload">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" value="{{ $albums->image }}" name="dataImage">
+                                <input type="file" id="uploadfile" name="image" onchange="readURL(this);" />
+                                <!--      Name  mà server request về sẽ là ImageUpload-->
+                                <button type="submit" class="btn btn-info">
+                                    {{ trans('label.update') }}
+                                </button>
+                            </div>
+                        </div>
                     </div>
-				</td>
+                </td>
             </tr>
-                <td colspan="2" align="center"><input type="submit" class="btn btn-success" value="{{ trans('label.update') }}" ></td>
+                <td colspan="2" align="center">
+                    <input type="submit" class="btn btn-success" value="{{ trans('label.update') }}" >
+                </td>
             </tr>
         </table>
     </form>

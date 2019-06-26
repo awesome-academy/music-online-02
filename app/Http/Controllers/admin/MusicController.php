@@ -40,7 +40,7 @@ class MusicController extends Controller
     		if ($request->hasFile('image')) {
     			$file = $request->image;
     			$fileName = $file->getClientOriginalName('image');
-    			$path = 'image';
+    			$path = 'images';
     			$file->move($path, $fileName);
     		} 
             $data['image'] = 'images/' . $fileName;
@@ -79,24 +79,32 @@ class MusicController extends Controller
     	$path = $music->path = $request->path;
     	$author = $music->author = $request->author;
     	$slug = $music->slug = $request->slug;
-    	if ($request->image == '') {
-    		$image = $music->image = $request->dataImage;
+    	if ($request->image == null) {
+    		$fileName = $music->image = $request->dataImage;
+            $music = Music::where('id', $id)->update([
+                'name' => $name, 
+                'lyric' => $lyric, 
+                'path' => $path, 
+                'author' => $author, 
+                'slug' => $slug, 
+                'image' => $fileName, 
+            ]);
     	} else {
     		if($request->hasFile('image')){
                 $file = $request->image;
                 $fileName = $file->getClientOriginalName('image');
-                $path = 'image';
+                $path = 'images';
                 $file->move($path, $fileName);
-            } 
+            }
+            $music = Music::where('id', $id)->update([
+                'name' => $name, 
+                'lyric' => $lyric, 
+                'path' => $path, 
+                'author' => $author, 
+                'slug' => $slug, 
+                'image' => 'images/' . $fileName, 
+            ]);
     	} 
-    	$music = Music::where('id', $id)->update([
-    		'name' => $name, 
-        	'lyric' => $lyric, 
-        	'path' => $path, 
-        	'author' => $author, 
-        	'slug' => $slug, 
-        	'image' => 'images/' . $fileName, 
-    	]);
 
     	return redirect()->route('musics');
     }
