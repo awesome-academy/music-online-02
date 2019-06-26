@@ -1,7 +1,30 @@
 $(".play-music").on("click", function (e) {
     let songId = $(this).data("id");
     play(songId);
+    countView(songId);
 });
+
+function countView(songId) {
+    var nameCookie = 'music_' + songId;
+    var expDate = new Date();
+    expDate.setTime(expDate.getTime() + (1 * 60 * 1000)); // add 1 minutes
+    if (typeof $.cookie(nameCookie) === 'undefined'){
+        $.cookie(nameCookie, songId, { 
+            expires: expDate, 
+            path: '/'
+        });
+        $.ajax({
+            type: 'GET',
+            url: '/addview/' + songId,
+            data: {
+                _token: $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function () {
+
+            }
+        });
+    }
+}
 
 function play(songId) {
     $.ajax({

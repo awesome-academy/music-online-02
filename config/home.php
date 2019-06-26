@@ -82,6 +82,7 @@ return [
     'link' => [
         'ajax' => 'https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js',
         'typehead' => 'https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js',
+        'cookie' => 'https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js',
     ],
 
 ];

@@ -103,4 +103,11 @@ class PageController extends Controller
 
         return view('pages.profile', compact('users', 'musics'));
     }
+
+    public function addview($id)
+    {
+        $musics = Music::findOrFail($id);
+        $musics->view = $musics->view + 1;
+        $musics->save();
+    }
 }
