@@ -62,10 +62,10 @@ class AlbumController extends Controller
         if ($request->hasFile('image')) { 
             $file = $request->image;
             $fileName = $file->getClientOriginalName('image');
-            $path = 'image';
+            $path = 'images';
             $file->move($path, $fileName);
-        } 
-        $data['image'] = 'images/' . $fileName;
+        }
+        $data['image'] = Album::loimage($fileName); //scope
         $album = Album::create($data);
 
         $artists = new Artist();
@@ -90,23 +90,31 @@ class AlbumController extends Controller
         $name = $album->name = $request->name;
         $slug = $album->slug = $request->slug;
         if ($request->image == null) {
-            $file = $album->image = $request->dataImage; //lay gia tri image cu
+            $fileName = $album->image = $request->dataImage; //lay gia tri image cu
+            $updated = $album->updated_at = now(); 
+            $album = Album::where('id', $id)->update([
+            'name' => $name, 
+            'slug' => $slug, 
+            'image' => $fileName, 
+            'updated_at' => $updated
+        ]);
         } else {
             if ($request->hasFile('image')) {
                 $file = $request->image;
                 $fileName = $file->getClientOriginalName('image');
-                $path = 'image';
+                $path = 'images';
                 $file->move($path, $fileName);
-            } 
-        } 
-        $updated = $album->updated_at = now(); 
-        $album = Album::where('id', $id)->update([
+            }
+            $updated = $album->updated_at = now();
+            $image = Album::loimage($fileName);  // scope
+            $album = Album::where('id', $id)->update([
             'name' => $name, 
             'slug' => $slug, 
-            'image' => 'images/' . $fileName, 
+            'image' => $image, 
             'updated_at' => $updated
-        ]);
-
+        ]); 
+        } 
+        
         return redirect()->route('albums');
     }
     

@@ -17,7 +17,7 @@
 			@foreach($music as $item)
 			<tr>
 				<td>{{ $item->id }}</td>
-				<td>{{ $item->name }}</td>
+				<td >{{ $item->name }}</td>
 				<td>{{ $item->lyric }}</td>
 				<td>{{ $item->view }}</td>
 				<td><img src="{{ $item->image }}" class="img-thumbnail"></td>

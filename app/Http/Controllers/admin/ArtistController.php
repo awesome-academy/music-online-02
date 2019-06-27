@@ -28,7 +28,13 @@ class ArtistController extends Controller
         $artists->name = $request->nameArtist;
         $artists->description = $request->description;
         $artists->slug = $request->slug;
-        $artists->image = 'images/' . $request->image;
+        if ($request->hasFile('image')) { 
+            $file = $request->image;
+            $fileName = $file->getClientOriginalName('image');
+            $path = 'images';
+            $file->move($path, $fileName);
+        }
+        $artists->image = Artist::loimage($fileName);
         $artists->save();
 
         return redirect()->route('artists');
@@ -50,17 +56,30 @@ class ArtistController extends Controller
         $name = $artists->name = $request->nameArtist;  
         $description = $artists->description = $request->description;
         $slug = $artists->slug = $request->slug;
-        if ($request->image == '') {
-            $image = $artists->image = $request->dataImage; // lay anh cu
-        } else {
-            $image = $artists->image = $request->image;
-        } 
-        $artists = Artist::where('id', $id)->update([
+        if ($request->image == null) {
+            $fileName = $artists->image = $request->dataImage; //lay gia tri image cu
+             $artists = Artist::where('id', $id)->update([
             'name' => $name, 
             'description' => $description, 
             'slug' => $slug, 
-            'image' => 'images/' . $image
+            'image' => $fileName,
         ]);
+        } else {
+            if ($request->hasFile('image')) {
+                $file = $request->image;
+                $fileName = $file->getClientOriginalName('image');
+                $path = 'images';
+                $file->move($path, $fileName);
+            }
+            $image = Artist::loimage($fileName); // config duong dan anh voi scope
+            Artist::where('id', $id)->update([
+                'name' => $name, 
+                'description' => $description, 
+                'slug' => $slug,
+                'image' => $image,
+            ]);
+           
+        }
         
         return redirect()->route('artists');
     }

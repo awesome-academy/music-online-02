@@ -141,5 +141,6 @@
         <script src="{{ config('home.template.js_main') }}"></script>
         <script src="{{ config('home.start_DT') }}"></script>
         <script src="{{ config('home.change_role') }}"></script>
+        <script type="text/javascript" src="custom-js/review_image.js"></script>
     </body>
 </html>

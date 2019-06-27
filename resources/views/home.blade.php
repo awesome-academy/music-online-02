@@ -146,7 +146,8 @@
                                         <img src="{{ $items->image }}" class="img-circle"> 
                                     </span> 
                                     <div class="clear">
-                                        <div><a href="artist/{{ $items->id }}">{{ $items->name }}</a></div>
+                                        <div><a href="artist/{{ $artist->id }}">{{ $items->name }}</a></div>
+
                                         <!-- <small class="text-muted">New York</small>  -->
                                     </div>
                                 </li>

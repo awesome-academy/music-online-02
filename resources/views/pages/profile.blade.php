@@ -30,7 +30,7 @@
                                                                 <div class="modal-body">
                                                                     <div>
                                                                         <div id="thumbbox">
-                                                                            <img height="300" width="300" alt="Thumb image" id="thumbimage" style="display: none" />
+                                                                            <img height="300" width="300" alt="Thumb image" id="thumbimage" src="{{ $users->image }}" />
                                                                             <a class="removeimg" href="javascript:" ></a>
                                                                             </div>
                                                                             <div id="myfileupload">
