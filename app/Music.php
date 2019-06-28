@@ -59,6 +59,16 @@ class Music extends Model
         return $this->hasMany('App\Favorite');
     }
 
+    public function ranks()
+    {
+        return $this->hasMany('App\Rank');
+    }
+
+    public function tops()
+    {
+        return $this->hasMany('App\Top');
+    }
+
     protected $searchable = [
         'name',
     ];

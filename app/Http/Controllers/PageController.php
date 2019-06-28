@@ -9,6 +9,7 @@ use App\User;
 use App\Category;
 use App\Playlist;
 use App\Favorite;
+use App\Top;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\HomeRegisterRequest;
 
@@ -45,8 +46,12 @@ class PageController extends Controller
             }
             array_push($music_like , $single_music_like);
         }
+
+        $week = Top::OrderBy('week_id', 'DESC')->limit(config('home.number.first'))->get('week_id');
+        $new_week = $week[0]->week_id;
+        $top = Top::where('week_id', $new_week)->get();
         
-        return view('home', compact('music_like', 'albums', 'artists')); 
+        return view('home', compact('music_like', 'albums', 'artists', 'top')); 
     } 
 
     public function artist($id)

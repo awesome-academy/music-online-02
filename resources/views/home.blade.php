@@ -117,16 +117,22 @@
                                 <div class="col-md-5">
                                     <h3 class="font-thin">{{ trans('label.top_songs') }}</h3>
                                     <div class="list-group bg-white list-group-lg no-bg auto"> 
+                                        @foreach ($top as $item)
+                                        @php
+                                            $music = $item->music()->first();
+                                            $artist = $music->artists()->first();
+                                        @endphp
                                         <a href="#" class="list-group-item clearfix"> 
-                                            <span class="pull-right h2 text-muted m-l">{{ config('home.number.begin_music') }}</span> 
-                                            <span class="pull-left thumb-sm avatar m-r"> 
-                                                <img src="{{ config('home.image.image_logo') }}" alt="..."> 
+                                            <span class="pull-right h2 text-muted m-l">{{ $item->views }}</span> 
+                                            <span class="pull-left thumb-sm  m-r"> 
+                                                <img src="{{ $music->image }}" alt="..."> 
                                             </span> 
                                             <span class="clear"> 
-                                                <span>{{ config('home.top_song.name') }}</span> 
-                                                <small class="text-muted clear text-ellipsis">{{ config('home.top_song.artist') }}</small> 
+                                                <span>{{ $music->name }}</span> 
+                                                <small class="text-muted clear text-ellipsis">{{ $artist->name }}</small> 
                                             </span> 
                                         </a> 
+                                        @endforeach
                                     </div>
                                 </div>
                             </div> 
