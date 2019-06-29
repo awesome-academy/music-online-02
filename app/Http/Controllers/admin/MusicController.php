@@ -12,21 +12,35 @@ use App\Artist;
 
 use App\Category;
 
+use App\Repositories\Music\MusicRepositoryInterface;
+
+use App\Repositories\Album\AlbumRepositoryInterface;
+
+use App\Repositories\Artist\ArtistRepositoryInterface;
+
 use Illuminate\Support\Facades\DB;
 
 class MusicController extends Controller
 {
+    private $albumRepository;
+
+    public function __construct(AlbumRepositoryInterface $albumRepository, MusicRepositoryInterface $musicRepository, ArtistRepositoryInterface $artistRepository)
+    {
+        $this->albumRepository = $albumRepository;
+        $this->musicRepository = $musicRepository;
+        $this->artistRepository = $artistRepository;
+    }
     public function listMusic()
     {
-    	$music = Music::orderBy('id', 'ASC')->get();
+    	$music = $this->musicRepository->getAll();
 
     	return view('admin.music.listMusic', compact('music'));
     }
 
     public function addViewMusic()
     {
-    	$artist = Artist::get();
-    	$category = Category::get();
+    	$artist = $this->artistRepository->getAll();
+    	$category = $this->categoryRepository->getALl();
 
     	return view('admin.music.addMusic', compact('artist', 'category'));
     }
@@ -63,12 +77,9 @@ class MusicController extends Controller
 
     public function updateViewMusic($id)
     {
-    	$musics = Music::find($id);
-        if ($musics == null) {
-            return view ('errors.404');
-        } else {
-            return view('admin.music.updateMusic', compact('musics'));
-        } 
+    	$musics = $this->musicRepository->findOrFail($id);
+        
+        return view('admin.music.updateMusic', compact('musics'));
     }
 
     public function updateProcessMusic(Request $request, $id)
@@ -111,11 +122,19 @@ class MusicController extends Controller
     
     public function deleteMusic($id)
     {
-    	$music = new Music();
-    	$music->artists()->detach(['music_id' => $id]);
-    	$music->categories()->detach(['music_id' => $id]);
-    	Music::where('id', $id)->delete();
-
-    	return redirect()->route('musics');
+        $muiscId = Music::find($id);
+        if($muiscId == null) {
+            return redirect()->route('musics')->with('err', '');
+        } else {
+            $music = Music::findOrFail($id);
+            $artists = $music->artists()->get();
+            $categories = $music->categories()->get();
+            $music->artists()->detach($artists[0]->id);
+            $music->categories()->detach($categories[0]->id);
+            Favorite::where('music_id', $id)->delete();
+            Music::where('id', $id)->delete();
+            
+            return redirect()->route('musics')->with('success', '');
+        }
     }
 }

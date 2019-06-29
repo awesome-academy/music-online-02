@@ -6,34 +6,46 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
-use App\Album;
+use App\Repositories\Album\AlbumRepositoryInterface;
 
-use App\Artist;
+use App\Repositories\Music\MusicRepositoryInterface;
 
-use App\Music;
+use App\Repositories\Artist\ArtistRepositoryInterface;
 
 use Illuminate\Support\Facades\DB;
 
+use App\Album;
+
+use App\Artist;
 class AlbumController extends Controller
 {
+    private $albumRepository;
+
+    public function __construct(AlbumRepositoryInterface $albumRepository, MusicRepositoryInterface $musicRepository, ArtistRepositoryInterface $artistRepository)
+    {
+        $this->albumRepository = $albumRepository;
+        $this->musicRepository = $musicRepository;
+        $this->artistRepository = $artistRepository;
+    }
+
     public function listAlbum()
     {
-        $albums = Album::orderBy('id', 'DESC')->get();
+        $albums = $this->albumRepository->getAll();
 
         return view('admin.album.listAlbum', compact('albums'));
     }
 
     public function listAlbumMusic($id)
     {
-        $albums = Album::find($id);
+        $albums = $this->albumRepository->findOrFail($id);
 
         return view('admin.album.listAlbumMusic', compact('albums'));
     }
 
     public function addMusic()
     {
-        $musics = Music::get();
-        $albums = Album::get();
+        $musics = $this->musicRepository->getAll();
+        $albums = $this->albumRepository->getAll();
 
         return view('admin.album.addMusic', compact('musics', 'albums'));
     }
@@ -42,15 +54,14 @@ class AlbumController extends Controller
     {
         $musicId = $request->music;
         $albumId = $request->album;
-        $album = Album::find($albumId);
-        $album->musics()->attach($musicId);
+        $this->albumRepository->addMusic($musicId, $albumId);
 
         return redirect()->route('albums');
     }
 
     public function addViewAlbum()
     {
-        $artists = Artist::get();
+        $artists = $this->artistRepository->getAll();
 
         return view('admin.album.addAlbum', compact('artists'));
     }
@@ -65,8 +76,8 @@ class AlbumController extends Controller
             $path = 'images';
             $file->move($path, $fileName);
         }
-        $data['image'] = Album::loimage($fileName); //scope
-        $album = Album::create($data);
+        $data['image'] = config('home.image.image') . $fileName; 
+        $album = $this->albumRepository->create($data);
 
         $artists = new Artist();
         $artists = $album->artists()->attach($album->id, ['artist_id' => $request->artist]);
@@ -76,12 +87,9 @@ class AlbumController extends Controller
 
     public function updateViewAlbum($id)
     {
-        $albums = Album::find($id);
-        if ($albums == null) {
-            return view ('errors.404');
-        } else {
-            return view('admin.album.updateAlbum', compact('albums'));
-        } 
+        $albums = $this->albumRepository->findOrFail($id);
+
+        return view('admin.album.updateAlbum', compact('albums'));
     }
 
     public function updateProcessAlbum(Request $request, $id)
@@ -106,12 +114,11 @@ class AlbumController extends Controller
                 $file->move($path, $fileName);
             }
             $updated = $album->updated_at = now();
-            $image = Album::loimage($fileName);  // scope
             $album = Album::where('id', $id)->update([
             'name' => $name, 
             'slug' => $slug, 
-            'image' => $image, 
-            'updated_at' => $updated
+            'image' =>  config('home.image.image') . $fileName, 
+            'updated_at' => $updated,
         ]); 
         } 
         
@@ -120,18 +127,14 @@ class AlbumController extends Controller
     
     public function deleteAlbum($id)
     {
-        $album = new Album();
-        $album->artists()->detach(['album_id' => $id]);
-        $album->categories()->detach(['album_id' => $id]);
-        Album::where('id', $id)->delete();
+        $this->albumRepository->deleteAlbum($id);
 
         return redirect()->route('albums');
     }
 
-    public function deleteAlbumMusic($id,$albumId)
+    public function deleteAlbumMusic($id, $albumId)
     {
-        $album = Album::find($albumId);
-        $album->musics()->detach($id);
+        $this->albumRepository->deleteAlbumMusic($id, $albumId);
 
         return redirect()->route('albums.music_view', $albumId);
     }

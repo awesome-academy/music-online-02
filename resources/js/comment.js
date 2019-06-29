@@ -112,7 +112,7 @@ function deleteComment(commentID){
         }
     });
 }
-
+ $('.frm_edit_comment').css({"display": "none"});
 //edit comment
 $('body').on('click', '.edit_comment', function(e) { 
     e.preventDefault;

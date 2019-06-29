@@ -141,31 +141,33 @@
                                         <div class="tab-pane" id="playlist">
                                             <div class="text-center wrapper"> 
                                                 <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
-                                                    @foreach ($playlists as $playlist)
-                                                         <li class="list-group-item clearfix">
-                                                            <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md"> 
-                                                                <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px"> 
-                                                                    <span class="bar1 a1 bg-primary lter"></span>
-                                                                    <span class="bar2 a2 bg-info lt"></span> 
-                                                                    <span class="bar3 a3 bg-success"></span> 
-                                                                    <span class="bar4 a4 bg-warning dk"></span> 
-                                                                    <span class="bar5 a5 bg-danger dker"></span> 
-                                                                </span>
-                                                             </a> 
-                                                            <a href="{{ route('playlist', [$playlist->id]) }}" class="pull-left thumb-sm m-r"> 
-                                                                <img class="img-lq" src="{{ $playlist->image }}"> 
-                                                            </a> 
-                                                            <a class="clear"> 
-                                                                <span class="block text-ellipsis">
-                                                                    <a href="{{ route('playlist', [$playlist->id]) }}">{{ $playlist->name }}</a>
-                                                                </span> 
-                                                                <small class="block">
-                                                                    <a href="{{ route('playlist', [$playlist->id]) }}">{{ $playlist->created_at }}</a>
-                                                                </small>
-                                                                <br>
-                                                            </a>
-                                                        </li>
-                                                    @endforeach 
+                                                    @if ($playlists != null)
+                                                        @foreach ($playlists as $playlist)
+                                                             <li class="list-group-item clearfix">
+                                                                <a href="#" class="jp-play-me pull-right m-t-sm m-l text-md"> 
+                                                                    <span class="musicbar animate inline m-l-sm" id="music"> 
+                                                                        <span class="bar1 a1 bg-primary lter"></span>
+                                                                        <span class="bar2 a2 bg-info lt"></span> 
+                                                                        <span class="bar3 a3 bg-success"></span> 
+                                                                        <span class="bar4 a4 bg-warning dk"></span> 
+                                                                        <span class="bar5 a5 bg-danger dker"></span> 
+                                                                    </span>
+                                                                 </a> 
+                                                                <a href="{{ route('playlist', [$playlist->id]) }}" class="pull-left thumb-sm m-r"> 
+                                                                    <img class="img-lq" src="{{ $playlist->image }}"> 
+                                                                </a> 
+                                                                <a class="clear"> 
+                                                                    <span class="block text-ellipsis">
+                                                                        <a href="{{ route('playlist', [$playlist->id]) }}">{{ $playlist->name }}</a>
+                                                                    </span> 
+                                                                    <small class="block">
+                                                                        <a href="{{ route('playlist', [$playlist->id]) }}">{{ $playlist->created_at }}</a>
+                                                                    </small>
+                                                                    <br>
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </div>
