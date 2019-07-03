@@ -9,6 +9,9 @@ return [
         'end_album' => '8',
         'end_song' => '15',
         'paginate_category' => '12',
+        'top_music' => '5',
+        'first' => '1',
+        'next_week' => '2',
     ],
     
     'menu' => [
