@@ -61,7 +61,7 @@ return [
     'image' => [
         'image_logo' => 'images/logo.png',
         'image_link' => '/',
-        'image' => 'image',
+        'image' => 'images/',
         'image_album' => 'album/',
     ],
     

@@ -186,7 +186,7 @@ Route::group(['middleware' => ['checkuser', 'locale']], function(){
 
 ////////////
 Route::group(['middleware' => 'locale'], function() {
-    Route::get('/', 'PageController@index');
+    Route::get('/', 'PageController@index')->name('home');
     Route::get('/musics/{id}', 'PageController@getJsonMusic');
     Route::get('/albums/{id}', 'PageController@getJsonAlbum');
     Route::get('/playlists/{id}', 'PageController@getJsonPlaylist');
@@ -231,3 +231,5 @@ Route::group(['middleware' => 'locale'], function() {
 
 });
 Route::get('/changeLang{lang}', 'HomeController@changeLang')->name('lang.change');
+Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('reFace');
+Route::get('/callback/{social}', 'SocialAuthController@callback');

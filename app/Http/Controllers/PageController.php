@@ -12,14 +12,32 @@ use App\Favorite;
 use App\Top;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\HomeRegisterRequest;
+use App\Repositories\Music\MusicRepositoryInterface;
+use App\Repositories\Album\AlbumRepositoryInterface;
+use App\Repositories\Artist\ArtistRepositoryInterface;
+use App\Repositories\Playlist\PlaylistRepositoryInterface;
+use App\Repositories\User\UserRepositoryInterface;
+use App\Repositories\Favorite\FavoriteRepositoryInterface;
 
 class PageController extends Controller
 {
+    private $albumRepository;
+
+    public function __construct(AlbumRepositoryInterface $albumRepository, MusicRepositoryInterface $musicRepository, ArtistRepositoryInterface $artistRepository, PlaylistRepositoryInterface $playlistRepository, UserRepositoryInterface $userRepository, FavoriteRepositoryInterface $favoriteRepository)
+    {
+        $this->albumRepository = $albumRepository;
+        $this->musicRepository = $musicRepository;
+        $this->artistRepository = $artistRepository;
+        $this->playlistRepository = $playlistRepository;
+        $this->userRepository = $userRepository;
+        $this->favoriteRepository = $favoriteRepository;
+    }
+
     public function index()
     {
-        $song = Music::orderBy('id', 'DESC')->skip(config('home.number.begin_music'))->take(config('home.number.end_music'))->get();
-        $albums = Album::orderBy('id', 'DESC')->skip(config('home.number.begin_album'))->take(config('home.number.end_album'))->get();
-        $artists = Artist::orderBy('id', 'DESC')->get();
+        $song = $this->musicRepository->skipTake();
+        $albums = $this->albumRepository->skipTake();
+        $artists = $this->artistRepository->getAll();
 
         $musics = '';
         $music_like = array();
@@ -56,33 +74,28 @@ class PageController extends Controller
 
     public function artist($id)
     {
-        $artist = Artist::findOrFail($id);
-        if (!$artist) {
-            return redirect('/');
-        } else {
-            return view('pages.artist', compact('artist'));
-        }
+        $artist = $this->artistRepository->findOrFail($id);
+
+        return view('pages.artist', compact('artist'));
     }
 
     public function getJsonMusic($id)
     {
-        $song = Music::with('artists')->findOrFail($id);
+        $song = $this->musicRepository->musicArtist($id);
         
         return response()->json($song);
     }
 
     public function getJsonAlbum($id)
     {
-        $album = Album::with('artists')->findOrFail($id);
-        $music = $album->musics()->get();
+        $music = $this->albumRepository->jsonAlbum($id);
 
         return response()->json($music);
     }
 
     public function getJsonPlaylist($id)
     {
-        $playlist = Playlist::findOrFail($id);
-        $music = $playlist->musics()->get();
+        $music = $this->playlistRepository->getJsonPlaylist($id);
 
         return response()->json($music);
     }
@@ -96,24 +109,16 @@ class PageController extends Controller
     }
 
     public function logout(){
-        Auth::logout();
-        session()->forget('username');
-        session()->forget('info_user');
-        session()->forget('name');
+        $this->userRepository->logout();
 
         return redirect('/');
     }
 
     public function profile($id){
-        $users = User::findOrFail($id);
-        $favorite = Favorite::where('user_id', $id)->get(); 
-        $musics = array();
-        foreach ($favorite as $item) {
-            $musicID = $item->music_id;
-            $music = Music::where('id', $musicID)->first();
-            array_push($musics, $music);
-        }
-        $playlists = Playlist::get();
+        $users = $this->userRepository->findOrFail($id);
+        $favorite = $this->favoriteRepository->getByUserId($id);
+        $musics = $this->favoriteRepository->likeMusic($favorite);
+        $playlists = $this->playlistRepository->getPlaylistByUser($id);
 
         return view('pages.profile', compact('users', 'musics', 'playlists'));
     }
@@ -127,8 +132,6 @@ class PageController extends Controller
 
     public function addview($id)
     {
-        $musics = Music::findOrFail($id);
-        $musics->view = $musics->view + 1;
-        $musics->save();
+        $this->musicRepository->addview($id);
     }
 }

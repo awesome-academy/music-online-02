@@ -28,6 +28,9 @@
                 <p class="text-muted text-center"><small>{{ trans('label.confirm_login') }}</small></p>
                 <a href="register" class="btn btn-lg btn-info btn-block btn-rounded">{{ trans('label.register') }}</a> 
             </form>
+            <button class="loginBtn loginBtn--facebook">
+                <a href="{{ route('reFace', ['facebook']) }}" id="fb">{{ trans('label.fb_login') }}</a>
+            </button>
         </section>
         </div>
     </section>

@@ -5,7 +5,6 @@
 		<thead>
 			<th>{{ trans('label.id') }}</th>
 			<th>{{ trans('label.name') }}</th>
-			<th>{{ trans('label.lyric') }}</th>
 			<th>{{ trans('label.view') }}</th>
 			<th>{{ trans('label.image') }}</th>
 			<th>{{ trans('label.author') }}</th>
@@ -18,7 +17,6 @@
 			<tr>
 				<td>{{ $item->id }}</td>
 				<td >{{ $item->name }}</td>
-				<td>{{ $item->lyric }}</td>
 				<td>{{ $item->view }}</td>
 				<td><img src="{{ $item->image }}" class="img-thumbnail"></td>
 				<td>{{ $item->author }}</td>
