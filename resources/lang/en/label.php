@@ -17,6 +17,7 @@ return [
     'lyric' => "Lyric:",
     'name' => 'Name',
     'id' => 'Id',
+    'fb_login' => 'Continue with Facebook',
     'view' => 'View',
     'rating' => 'rating',
     'add_category' => 'Add New Category',
