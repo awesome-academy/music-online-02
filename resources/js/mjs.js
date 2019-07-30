@@ -148,7 +148,7 @@ $(".plus").on("click", function (e) {
                 `
                 <div>
                     <i class="icon-playlist icon text-success-lter"></i>
-                    <li data-id ="`+ element.id +`" class="item_p_list" data-dismiss="modal"><a href="javascript:;">`+ element.name +`</a></li>
+                    <li data-id ="`+ element.id +`" class="item_p_list" data-dismiss="modal"><a href="javascript:;"data-toggle="tooltip" title="Add to old playlist">`+ element.name +`</a></li>
                     <hr>
                 </div>
                 `

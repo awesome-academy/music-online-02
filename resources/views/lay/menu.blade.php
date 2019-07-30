@@ -48,7 +48,7 @@
                                     $count_musics = $item->musics()->count();
                                 @endphp
                             <li> 
-                                <a href="#"> 
+                                <a href="{{ route('playlist', [$item->id]) }}"> 
                                     <i class="icon-playlist icon text-success-lter"></i> 
                                     <b class="badge bg-success dker pull-right">{{ $count_musics }}</b> 
                                     <span>{{ $item->name }}</span> 

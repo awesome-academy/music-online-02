@@ -13,5 +13,7 @@ use Throwable;
  */
 interface ArtistRepositoryInterface extends RepositoryInterface
 {
+	public function addImageArtist($image);
 
+	public function updateImage($id, $name, $description, $slug, $image, $dataImage);
 }

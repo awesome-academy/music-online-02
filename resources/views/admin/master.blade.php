@@ -92,7 +92,6 @@
                         <a class="dropdown-item" href="{{ route('musics') }}">{{ trans('label.music') }}</a>
                         <a class="dropdown-item" href="{{ route('albums') }}">{{ trans('label.album') }}</a>
                         <a class="dropdown-item" href="{{ route('roles') }}">{{ trans('label.role') }}</a>
-                        <a class="dropdown-item" href="#">{{ trans('label.rating') }}</a>
                         <a class="dropdown-item" href="{{ route('users') }}">{{ trans('label.user') }}</a>
                     </div>
                 </li>

@@ -104,8 +104,8 @@ class MusicController extends Controller
     		if($request->hasFile('image')){
                 $file = $request->image;
                 $fileName = $file->getClientOriginalName('image');
-                $path = 'images';
-                $file->move($path, $fileName);
+                $paths = 'images';
+                $file->move($paths, $fileName);
             }
             $music = Music::where('id', $id)->update([
                 'name' => $name, 

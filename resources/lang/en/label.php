@@ -28,6 +28,8 @@ return [
     'comment' => 'Comments',
     'activity' => 'Activity',
     'playlist' => 'Playlist',
+    'add_to_old' => 'Add to old playlist',
+    'create_new_playlist' => 'Create new playlist',
     'activity' => 'Activity',
     'follower' => 'Follower',
     'view' => 'View',

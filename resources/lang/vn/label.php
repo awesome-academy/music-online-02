@@ -25,6 +25,7 @@ return [
     'comment' => 'Bình luận',
     'activity' => 'Hoạt động',
     'follower' => 'Người theo dõi',
+    'create_new_playlist' => 'Thêm mới playlist ',
     'event' => 'Sự kiện',
     'interaction' => 'Sự tương tác',
     'follow' => 'Theo dõi',
