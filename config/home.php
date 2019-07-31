@@ -13,6 +13,8 @@ return [
         'first' => '1',
         'next_week' => '2',
     ],
+
+    'expire' => '60',
     
     'menu' => [
         'category' => [

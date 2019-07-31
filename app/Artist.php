@@ -18,11 +18,6 @@ class Artist extends Model
         return $this->belongsToMany('App\Album', 'artist_album', 'artist_id', 'album_id');
     }
 
-    public function scopeLoimage($image)
-    {
-        return 'images/' . $image;
-    }
-
     protected $searchable = [
         'name',
     ];

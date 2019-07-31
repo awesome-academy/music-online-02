@@ -18,6 +18,9 @@ use App\Repositories\Artist\ArtistRepositoryInterface;
 use App\Repositories\Playlist\PlaylistRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\Favorite\FavoriteRepositoryInterface;
+use Illuminate\Support\Facades\Redis;
+use Cache;
+use DB;
 
 class PageController extends Controller
 {
@@ -35,13 +38,21 @@ class PageController extends Controller
 
     public function index()
     {
-        $song = $this->musicRepository->skipTake();
-        $albums = $this->albumRepository->skipTake();
-        $artists = $this->artistRepository->getAll();
+        $expire = config('home.expire');
+        DB::connection()->enableQueryLog();
+        $song = Cache::remember('song', $expire, function(){
+            return $this->musicRepository->skipTake();
+        });
+        $albums = Cache::remember('album', $expire, function(){
+            return $this->albumRepository->skipTake();
+        });
+        $artists = Cache::remember('artist', $expire, function(){
+            return $this->artistRepository->getAll();
+        });
 
         $musics = '';
         $music_like = array();
-        
+                    
         foreach($song as $item){
             $single_music_like = array();
             $single_music_like[0] = $musics;
@@ -64,12 +75,12 @@ class PageController extends Controller
             }
             array_push($music_like , $single_music_like);
         }
-
         $week = Top::OrderBy('week_id', 'DESC')->limit(config('home.number.first'))->get('week_id');
         $new_week = $week[0]->week_id;
         $top = Top::where('week_id', $new_week)->get();
-        
+
         return view('home', compact('music_like', 'albums', 'artists', 'top')); 
+        
     } 
 
     public function artist($id)
