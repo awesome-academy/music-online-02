@@ -6,13 +6,22 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
+use App\Repositories\Category\CategoryRepositoryInterface;
+
 use App\Category;
 
 class CategoryController extends Controller
 {
+    private $categoryRepository;
+
+    public function __construct(CategoryRepositoryInterface $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     public function listCategory()
     {
-    	$categories = Category::orderBy('id', 'ASC')->get();
+    	$categories = $this->categoryRepository->getAll();
 
     	return view('admin.category.listCategory', compact('categories'));
     }
@@ -35,7 +44,7 @@ class CategoryController extends Controller
 
     public function updateViewCategory($id)
     {
-        $categories = Category::find($id);
+        $categories = $this->categoryRepository->find($id);
         if ($categories == null) {
             return redirect()->route('categories')->with('errId');      
         } else {
@@ -54,7 +63,14 @@ class CategoryController extends Controller
     
     public function deleteCategory($id)
     {
-    	Category::where('id', $id)->delete();
+    	$category = $this->categoryRepository->find($id);
+        if ($category == null) {
+            return redirect()->route('categories')->with('err', '');
+        } else {
+            $this->categoryRepository->deleteCategory($id);
+
+            return redirect()->route('categories')->with('success', '');
+        }
     	
     	return redirect()->route('categories');
     }

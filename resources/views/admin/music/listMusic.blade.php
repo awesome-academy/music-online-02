@@ -24,7 +24,7 @@
 				<td>{{ $item->slug }}</td>
 				<td>
 					<a href="{{ route('musics.update_view', [$item->id]) }}">{{ trans('label.update') }}</a>
-					<a href="{{ route('musics.delete', [$item->id]) }}">{{ trans('label.delete') }}</a>
+					<a href="{{ route('musics.delete', [$item->id]) }}" onclick="return confirm('Are you sure')">{{ trans('label.delete') }}</a>
 				</td>
 			</tr>		
 			@endforeach

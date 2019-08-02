@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('content')
 	<form action="{{ route('artists.add_process', ['$item->id']) }}" method="post" enctype="multipart/form-data">
-	    <legend>{{ trans('label.artist') }}</legend>
+	    <legend>{{ trans('label.artists') }}</legend>
 	    <input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<table class="table"> 
 		    <tr>

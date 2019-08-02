@@ -69,9 +69,9 @@ class ArtistController extends Controller
     {
         $artist = $this->artistRepository->find($id);
         if ($artist == null) {
-            return redirect->route('artists')->with('err','')
+            return redirect()->route('artists')->with('err', '');
         } else {
-            $this->artistRepository->delete($id);
+            $this->artistRepository->deleteArtist($id);
 
             return redirect()->route('artists')->with('success', '');
         }

@@ -12,11 +12,15 @@ use App\Artist;
 
 use App\Category;
 
+use App\Favorite;
+
 use App\Repositories\Music\MusicRepositoryInterface;
 
 use App\Repositories\Album\AlbumRepositoryInterface;
 
 use App\Repositories\Artist\ArtistRepositoryInterface;
+
+use App\Repositories\Category\CategoryRepositoryInterface;
 
 use Illuminate\Support\Facades\DB;
 
@@ -24,11 +28,12 @@ class MusicController extends Controller
 {
     private $albumRepository;
 
-    public function __construct(AlbumRepositoryInterface $albumRepository, MusicRepositoryInterface $musicRepository, ArtistRepositoryInterface $artistRepository)
+    public function __construct(AlbumRepositoryInterface $albumRepository, MusicRepositoryInterface $musicRepository, ArtistRepositoryInterface $artistRepository, CategoryRepositoryInterface $categoryRepository)
     {
         $this->albumRepository = $albumRepository;
         $this->musicRepository = $musicRepository;
         $this->artistRepository = $artistRepository;
+        $this->categoryRepository = $categoryRepository;
     }
     public function listMusic()
     {
@@ -40,7 +45,7 @@ class MusicController extends Controller
     public function addViewMusic()
     {
     	$artist = $this->artistRepository->getAll();
-    	$category = $this->categoryRepository->getALl();
+    	$category = $this->categoryRepository->getAll();
 
     	return view('admin.music.addMusic', compact('artist', 'category'));
     }

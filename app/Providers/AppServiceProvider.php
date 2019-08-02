@@ -16,6 +16,8 @@ use App\Repositories\User\UserRepositoryInterface;
 use App\Repositories\User\UserRepository;
 use App\Repositories\Favorite\FavoriteRepositoryInterface;
 use App\Repositories\Favorite\FavoriteRepository;
+use App\Repositories\Category\CategoryRepositoryInterface;
+use App\Repositories\Category\CategoryRepository;
 use App\Playlist;
 
 class AppServiceProvider extends ServiceProvider
@@ -33,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(PlaylistRepositoryInterface::class, PlaylistRepository::class);
         $this->app->singleton(UserRepositoryInterface::class, UserRepository::class);
         $this->app->singleton(FavoriteRepositoryInterface::class, FavoriteRepository::class);
+        $this->app->singleton(CategoryRepositoryInterface::class, CategoryRepository::class);
     }
 
     /**
