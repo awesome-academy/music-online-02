@@ -18,7 +18,7 @@
 				<td><img src="{{ $item->image }}" class="img-thumbnail"></td>
 				<td>
 					<a href="{{ route('artists.update_view', [$item->id]) }}" class="btn btn-dark">{{ trans('label.update') }}</a>
-					<a href="{{ route('artists.delete', [$item->id]) }}" class="btn btn-danger">{{ trans('label.delete') }}</a>
+					<a href="{{ route('artists.delete', [$item->id]) }}" class="btn btn-danger" onclick="return confirm('Are you sure')">{{ trans('label.delete') }}</a>
 				</td>
 			</tr>		
 			@endforeach

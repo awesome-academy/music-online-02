@@ -50,9 +50,6 @@
                                 <input type="hidden" value="{{ $artists->image }}" name="dataImage">
                                 <input type="file" id="uploadfile" name="image" onchange="readURL(this);" />
                                 <!--      Name  mà server request về sẽ là ImageUpload-->
-                                <button type="submit" class="btn btn-info">
-                                    {{ trans('label.update') }}
-                                </button>
                             </div>
                         </div>
                     </div>

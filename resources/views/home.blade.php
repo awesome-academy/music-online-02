@@ -31,10 +31,11 @@
                             @endphp
                             <input type="hidden" value="{{ $id_user }}" id="user_id">
                             <div class="row row-sm">
-                                @foreach($music_like as $items)
+                                @foreach ($music_like as $items)
                                 @php
                                     $id_music = $items[0]->id;
                                 @endphp
+                                @if ($id_music != null)
                                 <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                                     <div class="item">
                                         <div class="pos-rlt">
@@ -74,20 +75,24 @@
                                             </div>    
                                             @php
                                                 $artist = $items[0]->artists()->first();
-                                            @endphp     
+                                            @endphp
+                                            @if ($artist != null)
                                             <a href="artist/{{ $artist->id }}" class="text-ellipsis text-xs text-muted">
                                                 {{ $artist->name }}
-                                            </a> 
+                                            </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach                     
+                                @endif
+                                @endforeach
                             </div>
                             <div class="row">
                                 <div class="col-md-7 bg-primary">
                                     <h3 class="font-thin">{{ trans('label.album') }}</h3>
                                     <div class="row row-sm">
-                                        @foreach($albums as $items)
+                                        @foreach ($albums as $items)
+                                        @if ($albums != null)
                                         <div class="col-xs-6 col-sm-3">
                                             <div class="item">
                                                 <div class="pos-rlt">
@@ -111,6 +116,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                         @endforeach
                                     </div>
                                 </div>
@@ -122,6 +128,7 @@
                                             $music = $item->music()->first();
                                             $artist = $music->artists()->first();
                                         @endphp
+                                        @if ($music || $artist != null)
                                         <a href="#" class="list-group-item clearfix"> 
                                             <span class="pull-right h2 text-muted m-l">{{ $item->views }}</span> 
                                             <span class="pull-left thumb-sm  m-r"> 
@@ -131,7 +138,8 @@
                                                 <span>{{ $music->name }}</span> 
                                                 <small class="text-muted clear text-ellipsis">{{ $artist->name }}</small> 
                                             </span> 
-                                        </a> 
+                                        </a>
+                                        @endif
                                         @endforeach
                                     </div>
                                 </div>
@@ -145,7 +153,7 @@
                     <section class="vbox animated fadeInRight">
                         <section class="w-f-md scrollable hover">
                             <h4 class="font-thin m-l-md m-t">{{ trans('label.artists') }}</h4>
-                            @foreach($artists as $items)
+                            @foreach ($artists as $items)
                             <ul class="list-group no-bg no-borders auto m-t-n-xxs">
                                 <li class="list-group-item">
                                     <span class="pull-left thumb-xs m-t-xs avatar m-l-xs m-r-sm"> 
